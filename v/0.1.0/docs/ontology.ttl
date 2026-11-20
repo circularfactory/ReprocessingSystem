@@ -1,0 +1,1314 @@
+@prefix : <http://w3id.org/circularfactory/ReprocessingSystem#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://w3id.org/circularfactory/ReprocessingSystem#> .
+
+<http://w3id.org/circularfactory/ReprocessingSystem> rdf:type owl:Ontology ;
+                                                      owl:versionIRI <http://w3id.org/circularfactory/ReprocessingSystem/0.1.0> ;
+                                                      owl:imports <http://w3id.org/circularfactory/Core> ,
+                                                                  <http://www.w3.org/ns/prov-o#> ,
+                                                                  <http://www.w3.org/ns/sosa/> ;
+                                                      <http://purl.org/dc/terms/bibliographicCitation> "Wexel, H. (2026). The Reprocessing System Ontology for a Circular Factory (Version 0.1.0). Collaborative Research Centre SFB 1574, Karlsruhe Institute of Technology. http://w3id.org/circularfactory/ReprocessingSystem" ;
+                                                      <http://purl.org/dc/terms/created> "2026-10-14"^^xsd:date ;
+                                                      <http://purl.org/dc/terms/creator> "Helena Wexel" ;
+                                                      <http://purl.org/dc/terms/description> "Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) - SFB 1574 - project ID 471687386."@en ;
+                                                      <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/> ;
+                                                      <http://purl.org/dc/terms/modified> "2026-10-15"^^xsd:date ;
+                                                      <http://purl.org/dc/terms/publisher> "Collaborative Research Centre SFB 1574 Circular Factory for the Perpetual Product, Karlsruhe Institute of Technology (KIT)"@en ;
+                                                      <http://purl.org/dc/terms/title> "The Reprocessing System Ontology for a Circular Factory"@en ;
+                                                      <http://purl.org/vocab/vann/preferredNamespacePrefix> "rps" ;
+                                                      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/circularfactory/ReprocessingSystem#" ;
+                                                      rdfs:comment """Domain ontology of SFB 1574 subproject C02 (Reprocessing System). Formerly drafted under the namespace https://w3id.org/circularfactory/C02#. It extends the Circular Factory Core Ontology with the resources, processes, operations, process parameters, in-process observations, monitoring datasets and data-driven models of the semi-autonomous additive-subtractive reprocessing of unique metallic components (high-speed DED-LB/M combined with machining) in the InRePro cell.
+Reuse strategy: Core, SOSA and PROV-O are imported. QUDT is referenced but not imported because of its size; load the QUDT schema and the quantity-kind and unit vocabularies into the triple store separately. Terms of the Perpetual Product Ontology are referenced but not imported, because version 0.0.1 re-declares Core properties with conflicting domains and ranges. The alignment to DOLCE+DnS Ultralite is provided in the separate module reprocessing-system-dul-alignment.ttl.
+Extension point for causal knowledge (planned): process parameter settings (sosa:Actuation) and observations of deposit characteristics (sosa:Observation) are first-class individuals, so causal relations between them can be added later without changing existing terms."""@en ;
+                                                      rdfs:label "Reprocessing System Ontology"@en ;
+                                                      owl:versionInfo "0.1.0" ;
+                                                      <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-1 (sensor and measurement classes): rps:Sensor and rps:Measurement are defined locally as specialisations of sosa:Sensor and sosa:Result, as recommended by INF, because it is not yet decided whether every CRC subproject needs cfc:Sensor and cfc:Measurement in the Core. If such classes are added to the Core, rps:Sensor and rps:Measurement are to be aligned to them or deprecated."@en ,
+                                                                                                          "OPEN ISSUE OI-2 (uncertainty representation): the representation of measurement and prediction uncertainty (qudt:standardUncertainty, rps:hasCoverageFactor, rps:hasConfidenceLevel, rps:hasLowerPredictionBound, rps:hasUpperPredictionBound, rps:hasUncertaintyEvaluationMethod, rps:UncertaintyEvaluationMethod) is accepted by INF for now but must be aligned with the uncertainty models of subprojects B03 and A03."@en ,
+                                                                                                          "OPEN ISSUE OI-3 (Core consistency): in Core 0.9.0, cfc:Component is unsatisfiable because cfc:hasOrigin has the two domains cfc:Assembly and cfc:Component, which are disjoint. This ontology follows the intended semantics (rps:ReprocessedComponent is a subclass of cfc:Component) and does not work around it. The modelling requirements of the Core are owned by A01; the correction is pending there."@en ,
+                                                                                                          "OPEN ISSUE OI-4 (Perpetual Product Ontology): version 0.0.1 is referenced but not imported, because it re-declares Core properties with domains and ranges that conflict with Core 0.9.0 (e.g. cfc:hasFinalWorkpiece). To be imported once the two ontologies are harmonised."@en ,
+                                                                                                          "OPEN ISSUE OI-5 (further domain ontologies): an alignment to Onto3D was requested but not yet carried out because the intended ontology and namespace could not be identified unambiguously. QUDT is referenced but not imported because of its size."@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/bibliographicCitation
+<http://purl.org/dc/terms/bibliographicCitation> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+<http://www.w3.org/2004/02/skos/core#editorialNote> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/hasQuantityKind
+<http://qudt.org/schema/qudt/hasQuantityKind> rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/hasUnit
+<http://qudt.org/schema/qudt/hasUnit> rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/circularfactory/Core#enablesProcess
+<http://w3id.org/circularfactory/Core#enablesProcess> rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/circularfactory/Core#hasInputWorkpiece
+<http://w3id.org/circularfactory/Core#hasInputWorkpiece> rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/circularfactory/Core#implementsProcess
+<http://w3id.org/circularfactory/Core#implementsProcess> rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/circularfactory/Core#isSubTaskOf
+<http://w3id.org/circularfactory/Core#isSubTaskOf> rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#appliesProcessParameterSetting
+:appliesProcessParameterSetting rdf:type owl:ObjectProperty ;
+                                rdfs:domain :ProcessRun ;
+                                rdfs:range :ProcessParameterSetting ;
+                                rdfs:comment "Relates a process run to a nominal process parameter setting applied in it."@en ;
+                                rdfs:label "applies process parameter setting"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#comprisesManufacturingResource
+:comprisesManufacturingResource rdf:type owl:ObjectProperty ;
+                                rdfs:domain :SpecializedMachineCell ;
+                                rdfs:range :ManufacturingResource ;
+                                rdfs:comment "Relates the specialized machine cell to the machines it contains."@en ;
+                                rdfs:label "comprises manufacturing resource"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#documentsReprocessingOperation
+:documentsReprocessingOperation rdf:type owl:ObjectProperty ;
+                                rdfs:domain :ReprocessingHistory ;
+                                rdfs:range :ReprocessingOperation ;
+                                rdfs:comment "Relates a reprocessing history to a reprocessing operation it records."@en ;
+                                rdfs:label "documents reprocessing operation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasPowderNozzle
+:hasPowderNozzle rdf:type owl:ObjectProperty ;
+                 rdfs:domain :HighSpeedDEDMachine ;
+                 rdfs:range :PowderNozzle ;
+                 rdfs:comment "Relates a high-speed DED machine to the powder nozzle currently installed on it."@en ;
+                 rdfs:label "has powder nozzle"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory
+:hasReprocessingHistory rdf:type owl:ObjectProperty ,
+                                 owl:FunctionalProperty ;
+                        rdfs:domain <http://w3id.org/circularfactory/Core#Component> ;
+                        rdfs:range :ReprocessingHistory ;
+                        rdfs:comment "Relates a component to its reprocessing history."@en ;
+                        rdfs:label "has reprocessing history"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod
+:hasUncertaintyEvaluationMethod rdf:type owl:ObjectProperty ;
+                                rdfs:domain <http://qudt.org/schema/qudt/QuantityValue> ;
+                                rdfs:range :UncertaintyEvaluationMethod ;
+                                rdfs:comment "Relates a quantity value to the method by which its stated uncertainty was obtained."@en ;
+                                rdfs:label "has uncertainty evaluation method"@en ;
+                                <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isAssessedByObservation
+:isAssessedByObservation rdf:type owl:ObjectProperty ;
+                         rdfs:domain :DepositQualityState ;
+                         rdfs:range <http://www.w3.org/ns/sosa/Observation> ;
+                         rdfs:comment "Relates a deposit quality state to an observation or prediction on which its evaluation is based."@en ;
+                         rdfs:label "is assessed by observation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset
+:isComputedFromMonitoringDataset rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf <http://www.w3.org/ns/prov#used> ;
+                                 rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                                 rdfs:range :ProcessMonitoringDataset ;
+                                 rdfs:comment "Relates an observation whose result was derived by feature extraction to the raw dataset it was computed from."@en ;
+                                 rdfs:label "is computed from monitoring dataset"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn
+:isCurrentlyMountedOn rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/sosa/isHostedBy> ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain :MeasurementSystem ;
+                      rdfs:range :ManufacturingResource ;
+                      rdfs:comment "Relates a measurement system to the manufacturing resource on which it is currently mounted. Relevant for portable systems such as the acoustic emission system. Replaces the middleware term 'currentlyMountedOn'."@en ;
+                      rdfs:label "is currently mounted on"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun
+:isDepositedDuringRun rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasGeneratedBy> ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain :DepositedLayer ;
+                      rdfs:range :AdditiveDepositionRun ;
+                      rdfs:comment "Relates a deposited layer to the additive deposition run that produced it."@en ;
+                      rdfs:label "is deposited during run"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isDepositedOnWorkpiece
+:isDepositedOnWorkpiece rdf:type owl:ObjectProperty ;
+                        rdfs:domain :DepositedLayer ;
+                        rdfs:range <http://w3id.org/circularfactory/Core#Workpiece> ;
+                        rdfs:comment "Relates a deposited layer to the workpiece it was built onto."@en ;
+                        rdfs:label "is deposited on workpiece"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isObservedDuringProcessRun
+:isObservedDuringProcessRun rdf:type owl:ObjectProperty ;
+                            rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                            rdfs:range :ProcessRun ;
+                            rdfs:comment "Relates an observation to the process run during which the observed phenomenon occurred."@en ;
+                            rdfs:label "is observed during process run"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation
+:isStepOfReprocessingOperation rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf <http://w3id.org/circularfactory/Core#isSubTaskOf> ;
+                               rdf:type owl:FunctionalProperty ;
+                               rdfs:domain :ProcessRun ;
+                               rdfs:range :ReprocessingOperation ;
+                               rdfs:comment "Relates a process run to the reprocessing operation it belongs to. Replaces the middleware term 'partOfReprocessingOperation'."@en ;
+                               rdfs:label "is step of reprocessing operation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset
+:isTrainedOnMonitoringDataset rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom> ;
+                              rdfs:domain :DataDrivenProcessModel ;
+                              rdfs:range :ProcessMonitoringDataset ;
+                              rdfs:comment "Relates a data-driven process model to a dataset used for its training."@en ;
+                              rdfs:label "is trained on monitoring dataset"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent
+:reprocessesComponent rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://w3id.org/circularfactory/Core#hasInputWorkpiece> ;
+                      rdfs:domain :ReprocessingOperation ;
+                      rdfs:range <http://w3id.org/circularfactory/Core#Workpiece> ;
+                      rdfs:comment "Relates a reprocessing operation to the component it reprocesses. The component identity is managed by production control. The range is cfc:Workpiece; the middleware draft used cfc:Resource, which is disjoint with cfc:Workpiece in Core 0.9.0."@en ;
+                      rdfs:label "reprocesses component"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation
+:usesInputObservation rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInformedBy> ;
+                      rdfs:domain :ModelBasedPrediction ;
+                      rdfs:range <http://www.w3.org/ns/sosa/Observation> ;
+                      rdfs:comment "Relates a model-based prediction to an observation used as model input."@en ;
+                      rdfs:label "uses input observation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting
+:usesInputParameterSetting rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInformedBy> ;
+                           rdfs:domain :ModelBasedPrediction ;
+                           rdfs:range :ProcessParameterSetting ;
+                           rdfs:comment "Relates a model-based prediction to a process parameter setting used as model input."@en ;
+                           rdfs:label "uses input parameter setting"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock
+:usesPowderFeedstock rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf <http://www.w3.org/ns/prov#used> ;
+                     rdfs:domain :AdditiveDepositionRun ;
+                     rdfs:range :MetalPowderFeedstock ;
+                     rdfs:comment "Relates an additive deposition run to the powder batch it consumed."@en ;
+                     rdfs:label "uses powder feedstock"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem
+:wasRecordedByMeasurementSystem rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo> ;
+                                rdfs:domain :ProcessMonitoringDataset ;
+                                rdfs:range :MeasurementSystem ;
+                                rdfs:comment "Relates a process monitoring dataset to the measurement system that recorded it."@en ;
+                                rdfs:label "was recorded by measurement system"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun
+:wasRecordedDuringProcessRun rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasGeneratedBy> ;
+                             rdfs:domain :ProcessMonitoringDataset ;
+                             rdfs:range :ProcessRun ;
+                             rdfs:comment "Relates a process monitoring dataset to the process run in which it was recorded."@en ;
+                             rdfs:label "was recorded during process run"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/standardUncertainty
+<http://qudt.org/schema/qudt/standardUncertainty> rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasCausticOvality
+:hasCausticOvality rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :PowderCausticImageStack ;
+                   rdfs:range xsd:decimal ;
+                   rdfs:comment "Shortcut for the second Fourier order of the powder caustic cross-section (dimensionless) derived from a powder caustic image stack. Kept for compatibility with the C02 middleware ('causticOvality'); the canonical representation is an observation of rps:CausticOvality."@en ;
+                   rdfs:label "has caustic ovality"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination
+:hasCoefficientOfDetermination rdf:type owl:DatatypeProperty ,
+                                        owl:FunctionalProperty ;
+                               rdfs:domain :DataDrivenProcessModel ;
+                               rdfs:range xsd:decimal ;
+                               rdfs:comment "The coefficient of determination R² of a data-driven process model on its training data."@en ;
+                               rdfs:label "has coefficient of determination"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel
+:hasConfidenceLevel rdf:type owl:DatatypeProperty ,
+                             owl:FunctionalProperty ;
+                    rdfs:domain <http://qudt.org/schema/qudt/QuantityValue> ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "The confidence level (between 0 and 1) associated with an expanded uncertainty or a prediction interval."@en ;
+                    rdfs:label "has confidence level"@en ;
+                    <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor
+:hasCoverageFactor rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain <http://qudt.org/schema/qudt/QuantityValue> ;
+                   rdfs:range xsd:decimal ;
+                   rdfs:comment "The coverage factor k used to obtain an expanded uncertainty from the standard uncertainty (qudt:standardUncertainty) according to the GUM."@en ;
+                   rdfs:label "has coverage factor"@en ;
+                   <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime
+:hasEstimatedCompletionTime rdf:type owl:DatatypeProperty ,
+                                     owl:FunctionalProperty ;
+                            rdfs:domain :ReprocessingOperation ;
+                            rdfs:range xsd:dateTime ;
+                            rdfs:comment "The completion time of a reprocessing operation as estimated by the specialized machine cell and reported to production control. Replaces the middleware term 'estimatedCompletionAt'."@en ;
+                            rdfs:label "has estimated completion time"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex
+:hasLayerIndex rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :DepositedLayer ;
+               rdfs:range xsd:positiveInteger ;
+               rdfs:comment "The position of a deposited layer in the build-up sequence, starting with 1."@en ;
+               rdfs:label "has layer index"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound
+:hasLowerPredictionBound rdf:type owl:DatatypeProperty ,
+                                  owl:FunctionalProperty ;
+                         rdfs:domain <http://qudt.org/schema/qudt/QuantityValue> ;
+                         rdfs:range xsd:decimal ;
+                         rdfs:comment "The lower bound of the prediction interval of a model-based prediction, in the unit of the quantity value."@en ;
+                         rdfs:label "has lower prediction bound"@en ;
+                         <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasMaterialDesignation
+:hasMaterialDesignation rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :MetalPowderFeedstock ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "The standardised designation of the powder alloy, e.g. a material number."@en ;
+                        rdfs:label "has material designation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasOCTLayerHeight
+:hasOCTLayerHeight rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :OCTMeasurementSeries ;
+                   rdfs:range xsd:decimal ;
+                   rdfs:comment "Shortcut for the mean layer height in micrometres derived from an OCT measurement series. Kept for compatibility with the C02 middleware ('layerHeight'); the canonical representation is a process monitoring observation of rps:LayerHeight with a qudt:QuantityValue result."@en ;
+                   rdfs:label "has OCT layer height"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier
+:hasPowderBatchIdentifier rdf:type owl:DatatypeProperty ,
+                                   owl:FunctionalProperty ;
+                          rdfs:domain :MetalPowderFeedstock ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "The batch or lot number of a powder feedstock."@en ;
+                          rdfs:label "has powder batch identifier"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination
+:hasPredictiveCoefficientOfDetermination rdf:type owl:DatatypeProperty ,
+                                                  owl:FunctionalProperty ;
+                                         rdfs:domain :DataDrivenProcessModel ;
+                                         rdfs:range xsd:decimal ;
+                                         rdfs:comment "The cross-validated coefficient of determination (Q² or R²pred) of a data-driven process model."@en ;
+                                         rdfs:label "has predictive coefficient of determination"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataFormat
+:hasRawDataFormat rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ProcessMonitoringDataset ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "The file format of the raw data, e.g. HDF5, CSV or TDMS."@en ;
+                  rdfs:label "has raw data format"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataStorageLocation
+:hasRawDataStorageLocation rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :ProcessMonitoringDataset ;
+                           rdfs:range xsd:anyURI ;
+                           rdfs:comment "The location (URI or path) under which the raw data of a process monitoring dataset are stored. Replaces the middleware term 'storageLocation'."@en ;
+                           rdfs:label "has raw data storage location"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasSpectralLag
+:hasSpectralLag rdf:type owl:DatatypeProperty ;
+                rdfs:domain :EmissionSpectrumLog ;
+                rdfs:range xsd:decimal ;
+                rdfs:comment "Shortcut for the spectral lag in milliseconds between a laser power step and the emission response, derived from an emission spectrum log. Kept for compatibility with the C02 middleware ('spectralLag'); the canonical representation is an observation of rps:SpectralLag."@en ;
+                rdfs:label "has spectral lag"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder
+:hasStepOrder rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :ProcessRun ;
+              rdfs:range xsd:positiveInteger ;
+              rdfs:comment "The position of a process run within its reprocessing operation. Replaces the middleware term 'stepOrder'."@en ;
+              rdfs:label "has step order"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound
+:hasUpperPredictionBound rdf:type owl:DatatypeProperty ,
+                                  owl:FunctionalProperty ;
+                         rdfs:domain <http://qudt.org/schema/qudt/QuantityValue> ;
+                         rdfs:range xsd:decimal ;
+                         rdfs:comment "The upper bound of the prediction interval of a model-based prediction, in the unit of the quantity value."@en ;
+                         rdfs:label "has upper prediction bound"@en ;
+                         <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://qudt.org/schema/qudt/QuantityKind
+<http://qudt.org/schema/qudt/QuantityKind> rdf:type owl:Class .
+
+
+###  http://qudt.org/schema/qudt/QuantityValue
+<http://qudt.org/schema/qudt/QuantityValue> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#AtomicTask
+<http://w3id.org/circularfactory/Core#AtomicTask> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#Component
+<http://w3id.org/circularfactory/Core#Component> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#CompositeTask
+<http://w3id.org/circularfactory/Core#CompositeTask> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#EquippedCapability
+<http://w3id.org/circularfactory/Core#EquippedCapability> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#Operation
+<http://w3id.org/circularfactory/Core#Operation> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#QualityState
+<http://w3id.org/circularfactory/Core#QualityState> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#Resource
+<http://w3id.org/circularfactory/Core#Resource> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#SupportingProcess
+<http://w3id.org/circularfactory/Core#SupportingProcess> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#UnitPreservingProcess
+<http://w3id.org/circularfactory/Core#UnitPreservingProcess> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#VirginMaterial
+<http://w3id.org/circularfactory/Core#VirginMaterial> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/Core#Workpiece
+<http://w3id.org/circularfactory/Core#Workpiece> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/PerpetualProduct#ManufacturingHistory
+<http://w3id.org/circularfactory/PerpetualProduct#ManufacturingHistory> rdf:type owl:Class .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionRecording
+:AcousticEmissionRecording rdf:type owl:Class ;
+                           rdfs:subClassOf :ProcessMonitoringDataset ;
+                           rdfs:comment "A structure-borne sound recording of an acoustic emission system."@en ;
+                           rdfs:label "Acoustic Emission Recording"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionSystem
+:AcousticEmissionSystem rdf:type owl:Class ;
+                        rdfs:subClassOf :MeasurementSystem ;
+                        rdfs:comment "A structure-borne sound sensor system (e.g. QASS). It is the only measurement system used in both deposition and machining and is remounted between the two machines."@en ;
+                        rdfs:label "Acoustic Emission System"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun
+:AdditiveDepositionRun rdf:type owl:Class ;
+                       rdfs:subClassOf :ProcessRun ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty <http://w3id.org/circularfactory/Core#implementsProcess> ;
+                                         owl:allValuesFrom :HighSpeedDEDProcess
+                                       ] ;
+                       rdfs:comment "A process run in which material is deposited by high-speed DED-LB/M."@en ;
+                       rdfs:label "Additive Deposition Run"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess
+:AdditiveSubtractiveReprocessingProcess rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://w3id.org/circularfactory/Core#UnitPreservingProcess> ;
+                                        rdfs:comment "A production process that restores a damaged component by removing the damaged volume, rebuilding it by high-speed DED-LB/M and finish machining the functional surfaces. One component enters and one component leaves the process."@en ;
+                                        rdfs:label "Additive-Subtractive Reprocessing Process"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#DamageRemovalMachiningProcess
+:DamageRemovalMachiningProcess rdf:type owl:Class ;
+                               rdfs:subClassOf :SubtractiveMachiningProcess ;
+                               rdfs:comment "Machining that removes the damaged or affected volume of a component before additive build-up, based on inspection information on damage location and type."@en ;
+                               rdfs:label "Damage Removal Machining Process"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel
+:DataDrivenProcessModel rdf:type owl:Class ;
+                        rdfs:subClassOf :Sensor ,
+                                        <http://www.w3.org/ns/prov#Entity> ;
+                        rdfs:comment "A statistical or machine-learning model that predicts deposit characteristics from process parameters and process monitoring features. Modelled as a virtual sensor in the sense of SOSA."@en ;
+                        rdfs:label "Data-Driven Process Model"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic
+:DepositCharacteristic rdf:type owl:Class ;
+                       rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> ;
+                       rdfs:comment "An observable property of deposited material, e.g. layer height, track width or relative density."@en ;
+                       rdfs:label "Deposit Characteristic"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#DepositQualityState
+:DepositQualityState rdf:type owl:Class ;
+                     rdfs:subClassOf <http://w3id.org/circularfactory/Core#QualityState> ;
+                     rdfs:comment "The quality state of a workpiece after deposition, evaluated at a given time and supported by observations of deposit characteristics."@en ;
+                     rdfs:label "Deposit Quality State"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer
+:DepositedLayer rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+                rdfs:comment "A layer of material deposited onto a workpiece during one additive deposition run. Characteristics such as layer height or relative density are observed on it."@en ;
+                rdfs:label "Deposited Layer"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter
+:DepositionProcessParameter rdf:type owl:Class ;
+                            rdfs:subClassOf :ProcessParameter ;
+                            rdfs:comment "A process parameter of high-speed DED-LB/M, e.g. laser power, processing speed or powder mass flow rate."@en ;
+                            rdfs:label "Deposition Process Parameter"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#EmissionSpectrumLog
+:EmissionSpectrumLog rdf:type owl:Class ;
+                     rdfs:subClassOf :ProcessMonitoringDataset ;
+                     rdfs:comment "A time-resolved log of emission spectra recorded by an optical emission spectrometer."@en ;
+                     rdfs:label "Emission Spectrum Log"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#FeatureExtractionProcedure
+:FeatureExtractionProcedure rdf:type owl:Class ;
+                            rdfs:subClassOf <http://www.w3.org/ns/sosa/Procedure> ;
+                            rdfs:comment "A documented signal or image processing procedure that derives a characteristic value from raw sensor data, e.g. the evaluation of the second Fourier order of the caustic cross-section."@en ;
+                            rdfs:label "Feature Extraction Procedure"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#FinishMachiningProcess
+:FinishMachiningProcess rdf:type owl:Class ;
+                        rdfs:subClassOf :SubtractiveMachiningProcess ;
+                        rdfs:comment "Machining after additive build-up that restores the geometry and surface of the functional surfaces."@en ;
+                        rdfs:label "Finish Machining Process"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#FullReprocessingCapability
+:FullReprocessingCapability rdf:type owl:Class ;
+                            rdfs:subClassOf <http://w3id.org/circularfactory/Core#EquippedCapability> ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty <http://w3id.org/circularfactory/Core#enablesProcess> ;
+                                              owl:allValuesFrom :AdditiveSubtractiveReprocessingProcess
+                                            ] ;
+                            rdfs:comment "The capability of the specialized machine cell to reprocess a damaged component by damage removal, high-speed DED-LB/M build-up and finish machining."@en ;
+                            rdfs:label "Full Reprocessing Capability"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedCamera
+:HighSpeedCamera rdf:type owl:Class ;
+                 rdfs:subClassOf :MeasurementSystem ;
+                 rdfs:comment "A camera for high-speed imaging of the melt pool and the powder-laser interaction."@en ;
+                 rdfs:label "High-Speed Camera"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDCapability
+:HighSpeedDEDCapability rdf:type owl:Class ;
+                        rdfs:subClassOf <http://w3id.org/circularfactory/Core#EquippedCapability> ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://w3id.org/circularfactory/Core#enablesProcess> ;
+                                          owl:allValuesFrom :HighSpeedDEDProcess
+                                        ] ;
+                        rdfs:comment "The capability of a high-speed DED machine to deposit material by HS DED-LB/M."@en ;
+                        rdfs:label "High-Speed DED Capability"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine
+:HighSpeedDEDMachine rdf:type owl:Class ;
+                     rdfs:subClassOf :ManufacturingResource ,
+                                     <http://www.w3.org/ns/sosa/Actuator> ;
+                     rdfs:comment "A machine for high-speed directed energy deposition with laser beam and metal powder (HS DED-LB/M, EHLA), e.g. the 5-axis pE3D system of ponticon GmbH in the InRePro cell."@en ;
+                     rdfs:label "High-Speed DED Machine"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess
+:HighSpeedDEDProcess rdf:type owl:Class ;
+                     rdfs:subClassOf <http://w3id.org/circularfactory/Core#UnitPreservingProcess> ;
+                     rdfs:comment "High-speed directed energy deposition with laser beam and metal powder (HS DED-LB/M, EHLA), in which the powder focus lies above the melt pool so that the powder is largely molten before it reaches the substrate."@en ;
+                     rdfs:label "High-Speed DED Process"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedVideoRecording
+:HighSpeedVideoRecording rdf:type owl:Class ;
+                         rdfs:subClassOf :ProcessMonitoringDataset ;
+                         rdfs:comment "An image sequence recorded by a high-speed camera."@en ;
+                         rdfs:label "High-Speed Video Recording"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanProfile
+:LaserLineScanProfile rdf:type owl:Class ;
+                      rdfs:subClassOf :ProcessMonitoringDataset ;
+                      rdfs:comment "A set of surface profiles recorded by a laser line scanner."@en ;
+                      rdfs:label "Laser Line Scan Profile"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanner
+:LaserLineScanner rdf:type owl:Class ;
+                  rdfs:subClassOf :MeasurementSystem ;
+                  rdfs:comment "A laser triangulation sensor that captures the surface profile of deposited tracks and layers."@en ;
+                  rdfs:label "Laser Line Scanner"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter
+:MachiningProcessParameter rdf:type owl:Class ;
+                           rdfs:subClassOf :ProcessParameter ;
+                           rdfs:comment "A process parameter of milling or turning, e.g. cutting speed or depth of cut."@en ;
+                           rdfs:label "Machining Process Parameter"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun
+:MachiningRun rdf:type owl:Class ;
+              rdfs:subClassOf :ProcessRun ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://w3id.org/circularfactory/Core#implementsProcess> ;
+                                owl:allValuesFrom :SubtractiveMachiningProcess
+                              ] ;
+              rdfs:comment "A process run in which material is removed by milling or turning."@en ;
+              rdfs:label "Machining Run"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource
+:ManufacturingResource rdf:type owl:Class ;
+                       rdfs:subClassOf <http://w3id.org/circularfactory/Core#Resource> ,
+                                       <http://www.w3.org/ns/sosa/Platform> ;
+                       rdfs:comment "A machine of the reprocessing cell that changes the geometry or material state of a workpiece and hosts measurement systems."@en ;
+                       rdfs:label "Manufacturing Resource"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MaterialRemovalCapability
+:MaterialRemovalCapability rdf:type owl:Class ;
+                           rdfs:subClassOf <http://w3id.org/circularfactory/Core#EquippedCapability> ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty <http://w3id.org/circularfactory/Core#enablesProcess> ;
+                                             owl:allValuesFrom :SubtractiveMachiningProcess
+                                           ] ;
+                           rdfs:comment "The capability of the specialized machine cell to perform machining only, without additive build-up."@en ;
+                           rdfs:label "Material Removal Capability"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#Measurement
+:Measurement rdf:type owl:Class ;
+             rdfs:subClassOf <http://www.w3.org/ns/sosa/Result> ;
+             rdfs:comment "Data produced by a measurement observation."@en ;
+             rdfs:label "Measurement result"@en ;
+             <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-1: local class recommended by INF while it is open whether a measurement class is added to the Core. OPEN ISSUE OI-2: whether quantity-value results of observations shall additionally be typed as rps:Measurement is to be decided together with the uncertainty alignment with B03 and A03."@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem
+:MeasurementSystem rdf:type owl:Class ;
+                   rdfs:subClassOf <http://w3id.org/circularfactory/Core#Resource> ,
+                                   :Sensor ;
+                   rdfs:comment "A physical measurement system of the reprocessing cell that observes the process, the powder stream or the workpiece. Portable systems may be moved between manufacturing resources."@en ;
+                   rdfs:label "Measurement System"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MeltPool
+:MeltPool rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+          rdfs:comment "The liquid metal region of the interaction zone during deposition, observed by pyrometry, high-speed imaging and emission spectroscopy."@en ;
+          rdfs:label "Melt Pool"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock
+:MetalPowderFeedstock rdf:type owl:Class ;
+                      rdfs:subClassOf <http://w3id.org/circularfactory/Core#VirginMaterial> ,
+                                      <http://www.w3.org/ns/prov#Entity> ,
+                                      <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+                      rdfs:comment "A batch of metal powder used as filler material in high-speed DED-LB/M, characterised among others by its particle size distribution."@en ;
+                      rdfs:label "Metal Powder Feedstock"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCapability
+:MillTurnMachiningCapability rdf:type owl:Class ;
+                             rdfs:subClassOf <http://w3id.org/circularfactory/Core#EquippedCapability> ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty <http://w3id.org/circularfactory/Core#enablesProcess> ;
+                                               owl:allValuesFrom :SubtractiveMachiningProcess
+                                             ] ;
+                             rdfs:comment "The capability of a mill-turn machining centre to remove material by milling and turning."@en ;
+                             rdfs:label "Mill-Turn Machining Capability"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCentre
+:MillTurnMachiningCentre rdf:type owl:Class ;
+                         rdfs:subClassOf :ManufacturingResource ,
+                                         <http://www.w3.org/ns/sosa/Actuator> ;
+                         rdfs:comment "A machine tool for milling and turning used for damage removal before and finish machining after deposition, e.g. the 5-axis DMU 60 eVo of DMG MORI in the InRePro cell."@en ;
+                         rdfs:label "Mill-Turn Machining Centre"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction
+:ModelBasedPrediction rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty <http://www.w3.org/ns/sosa/madeBySensor> ;
+                                        owl:allValuesFrom :DataDrivenProcessModel
+                                      ] ;
+                      rdfs:comment "An estimate of an observable property made by a data-driven process model (virtual sensor) from process parameter settings and process monitoring observations. The result carries the prediction uncertainty."@en ;
+                      rdfs:label "Model-Based Prediction"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun
+:MonitoringRun rdf:type owl:Class ;
+               rdfs:subClassOf :ProcessRun ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://w3id.org/circularfactory/Core#implementsProcess> ;
+                                 owl:allValuesFrom :MultisensoryProcessMonitoringProcess
+                               ] ;
+               rdfs:comment "A process run in which a measurement system records data during or before a deposition or machining run."@en ;
+               rdfs:label "Monitoring Run"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess
+:MultisensoryProcessMonitoringProcess rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://w3id.org/circularfactory/Core#SupportingProcess> ;
+                                      rdfs:comment "A supporting process in which one or more measurement systems observe a deposition or machining process without changing the workpiece."@en ;
+                                      rdfs:label "Multisensory Process Monitoring Process"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#OCTMeasurementSeries
+:OCTMeasurementSeries rdf:type owl:Class ;
+                      rdfs:subClassOf :ProcessMonitoringDataset ;
+                      rdfs:comment "A series of distance measurements recorded by an optical coherence tomography system."@en ;
+                      rdfs:label "OCT Measurement Series"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#OpticalCoherenceTomographySystem
+:OpticalCoherenceTomographySystem rdf:type owl:Class ;
+                                  rdfs:subClassOf :MeasurementSystem ;
+                                  rdfs:comment "An inline interferometric distance measurement system (e.g. Precitec IDM1550) used for in-process measurement of layer height in high-speed DED-LB/M."@en ;
+                                  rdfs:label "Optical Coherence Tomography System"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#OpticalEmissionSpectrometer
+:OpticalEmissionSpectrometer rdf:type owl:Class ;
+                             rdfs:subClassOf :MeasurementSystem ;
+                             rdfs:comment "A spectrometer for synchronised multispectral emission analysis of the interaction zone, used among others to determine the spectral lag."@en ;
+                             rdfs:label "Optical Emission Spectrometer"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PartialLeastSquaresRegressionModel
+:PartialLeastSquaresRegressionModel rdf:type owl:Class ;
+                                    rdfs:subClassOf :DataDrivenProcessModel ;
+                                    rdfs:comment "A data-driven process model based on partial least squares (PLS) regression."@en ;
+                                    rdfs:label "Partial Least Squares Regression Model"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisProcess
+:PowderCausticAnalysisProcess rdf:type owl:Class ;
+                              rdfs:subClassOf :MultisensoryProcessMonitoringProcess ;
+                              rdfs:comment "A supporting process that characterises the powder caustic before deposition in order to assess the condition of the powder nozzle."@en ;
+                              rdfs:label "Powder Caustic Analysis Process"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisSystem
+:PowderCausticAnalysisSystem rdf:type owl:Class ;
+                             rdfs:subClassOf :MeasurementSystem ;
+                             rdfs:comment "A light-section system (e.g. ponticon PowderSpy) that images cross-sections of the powder stream to characterise the powder caustic and the nozzle condition."@en ;
+                             rdfs:label "Powder Caustic Analysis System"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic
+:PowderCausticCharacteristic rdf:type owl:Class ;
+                             rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> ;
+                             rdfs:comment "An observable property of the powder stream that indicates the condition of the powder nozzle, e.g. caustic waist diameter or caustic ovality."@en ;
+                             rdfs:label "Powder Caustic Characteristic"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticImageStack
+:PowderCausticImageStack rdf:type owl:Class ;
+                         rdfs:subClassOf :ProcessMonitoringDataset ;
+                         rdfs:comment "A stack of powder stream cross-section images recorded by a powder caustic analysis system."@en ;
+                         rdfs:label "Powder Caustic Image Stack"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic
+:PowderCharacteristic rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> ;
+                      rdfs:comment "An observable property of the metal powder feedstock, e.g. a characteristic value of the particle size distribution."@en ;
+                      rdfs:label "Powder Characteristic"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle
+:PowderNozzle rdf:type owl:Class ;
+              rdfs:subClassOf <http://w3id.org/circularfactory/Core#Resource> ,
+                              <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+              rdfs:comment "A coaxial powder nozzle of a high-speed DED machine. Its abrasive wear changes the powder caustic and is assessed by powder caustic analysis before deposition."@en ;
+              rdfs:label "Powder Nozzle"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderStream
+:PowderStream rdf:type owl:Class ;
+              rdfs:subClassOf <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+              rdfs:comment "The powder-gas jet leaving the powder nozzle, whose caustic (waist diameter, focus position, cross-section shape) is observed by powder caustic analysis."@en ;
+              rdfs:label "Powder Stream"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringCapability
+:ProcessMonitoringCapability rdf:type owl:Class ;
+                             rdfs:subClassOf <http://w3id.org/circularfactory/Core#EquippedCapability> ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty <http://w3id.org/circularfactory/Core#enablesProcess> ;
+                                               owl:allValuesFrom :MultisensoryProcessMonitoringProcess
+                                             ] ;
+                             rdfs:comment "The capability of a measurement system to observe a deposition or machining process."@en ;
+                             rdfs:label "Process Monitoring Capability"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset
+:ProcessMonitoringDataset rdf:type owl:Class ;
+                          rdfs:subClassOf :Measurement ,
+                                          <http://www.w3.org/ns/prov#Entity> ;
+                          rdfs:comment "A raw data artifact recorded by a measurement system during a process run. Only the storage location of the raw data is kept in the knowledge graph. Replaces the middleware term 'Dataset'."@en ;
+                          rdfs:label "Process Monitoring Dataset"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringObservation
+:ProcessMonitoringObservation rdf:type owl:Class ;
+                              rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/ns/sosa/madeBySensor> ;
+                                                owl:allValuesFrom :MeasurementSystem
+                                              ] ;
+                              rdfs:comment "An observation made by a physical measurement system of the reprocessing cell. The result is given as qudt:QuantityValue, optionally with its measurement uncertainty."@en ;
+                              rdfs:label "Process Monitoring Observation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter
+:ProcessParameter rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.w3.org/ns/sosa/ActuatableProperty> ;
+                  rdfs:comment "A controllable property of a manufacturing process that is set by the machine control."@en ;
+                  rdfs:label "Process Parameter"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting
+:ProcessParameterSetting rdf:type owl:Class ;
+                         rdfs:subClassOf <http://www.w3.org/ns/sosa/Actuation> ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://www.w3.org/ns/sosa/actsOnProperty> ;
+                                           owl:allValuesFrom :ProcessParameter
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://www.w3.org/ns/sosa/madeByActuator> ;
+                                           owl:allValuesFrom :ManufacturingResource
+                                         ] ;
+                         rdfs:comment "The setting of one process parameter to a nominal value by a manufacturing resource during a process run. The nominal value is given as qudt:QuantityValue via sosa:hasResult. Settings are individuals so that they can later serve as causes in causal relations."@en ;
+                         rdfs:label "Process Parameter Setting"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun
+:ProcessRun rdf:type owl:Class ;
+            rdfs:subClassOf <http://w3id.org/circularfactory/Core#AtomicTask> ,
+                            <http://w3id.org/circularfactory/Core#Operation> ,
+                            <http://www.w3.org/ns/prov#Activity> ;
+            rdfs:comment "An executed, indivisible step of a reprocessing operation on one resource of the cell, for example one deposition run, one machining run or one monitoring run."@en ;
+            rdfs:label "Process Run"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity
+:ProcessSignalQuantity rdf:type owl:Class ;
+                       rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> ;
+                       rdfs:comment "An observable property of the running process itself, e.g. melt pool temperature, spectral lag or acoustic emission amplitude."@en ;
+                       rdfs:label "Process Signal Quantity"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PyrometryTimeSeries
+:PyrometryTimeSeries rdf:type owl:Class ;
+                     rdfs:subClassOf :ProcessMonitoringDataset ;
+                     rdfs:comment "A temperature time series recorded by a two-colour pyrometer."@en ;
+                     rdfs:label "Pyrometry Time Series"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent
+:ReprocessedComponent rdf:type owl:Class ;
+                      rdfs:subClassOf <http://w3id.org/circularfactory/Core#Component> ,
+                                      <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+                      rdfs:comment "A component that is or was subject to a reprocessing operation. The component identity is managed by production control; this class adds the C02 view on it."@en ;
+                      rdfs:label "Reprocessed Component"@en ;
+                      <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-3: unsatisfiable under Core 0.9.0 because cfc:Component is unsatisfiable there; correction pending in the Core."@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory
+:ReprocessingHistory rdf:type owl:Class ;
+                     rdfs:subClassOf <http://w3id.org/circularfactory/PerpetualProduct#ManufacturingHistory> ,
+                                     <http://www.w3.org/ns/prov#Entity> ;
+                     rdfs:comment "The part of the manufacturing history of a component that documents the reprocessing operations it has undergone in the specialized machine cell."@en ;
+                     rdfs:label "Reprocessing History"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation
+:ReprocessingOperation rdf:type owl:Class ;
+                       rdfs:subClassOf <http://w3id.org/circularfactory/Core#CompositeTask> ,
+                                       <http://w3id.org/circularfactory/Core#Operation> ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :reprocessesComponent ;
+                                         owl:someValuesFrom <http://w3id.org/circularfactory/Core#Workpiece>
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty <http://w3id.org/circularfactory/Core#implementsProcess> ;
+                                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                                             owl:unionOf ( :AdditiveSubtractiveReprocessingProcess
+                                                                           :SubtractiveMachiningProcess
+                                                                         )
+                                                           ]
+                                       ] ;
+                       rdfs:comment "An operation dispatched by production control to the specialized machine cell to reprocess one component. Its IRI serves as correlation key between production control and subproject C02; it is decomposed into process runs."@en ;
+                       rdfs:label "Reprocessing Operation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ResponseSurfaceModel
+:ResponseSurfaceModel rdf:type owl:Class ;
+                      rdfs:subClassOf :DataDrivenProcessModel ;
+                      rdfs:comment "An empirical regression model derived from a design of experiments, e.g. a central composite design."@en ;
+                      rdfs:label "Response Surface Model"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#Sensor
+:Sensor rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.w3.org/ns/sosa/Sensor> ;
+        rdfs:comment "Any physical or virtual device, agent or software that observes a property in the C02 reprocessing context."@en ;
+        rdfs:label "Sensor"@en ;
+        <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-1: local class recommended by INF while it is open whether a sensor class is added to the Core."@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell
+:SpecializedMachineCell rdf:type owl:Class ;
+                        rdfs:subClassOf <http://w3id.org/circularfactory/Core#Resource> ;
+                        rdfs:comment "The InRePro reprocessing cell of subproject C02 as the single externally addressed resource of the circular factory. It receives reprocessing operations from production control and decides internally on the sequence of process runs and the measurement systems involved. Replaces the middleware term 'SpecializedMachines' (singular noun required by the SFB modeling convention)."@en ;
+                        rdfs:label "Specialized Machine Cell"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess
+:SubtractiveMachiningProcess rdf:type owl:Class ;
+                             rdfs:subClassOf <http://w3id.org/circularfactory/Core#UnitPreservingProcess> ;
+                             rdfs:comment "A production process that removes material from a component by milling or turning."@en ;
+                             rdfs:label "Subtractive Machining Process"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#TwoColourPyrometer
+:TwoColourPyrometer rdf:type owl:Class ;
+                    rdfs:subClassOf :MeasurementSystem ;
+                    rdfs:comment "A coaxial ratio pyrometer measuring the temperature of the interaction zone largely independently of emissivity."@en ;
+                    rdfs:label "Two-Colour Pyrometer"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod
+:UncertaintyEvaluationMethod rdf:type owl:Class ;
+                             rdfs:comment "The method by which the uncertainty stated for a quantity value was obtained."@en ;
+                             rdfs:label "Uncertainty Evaluation Method"@en ;
+                             <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://qudt.org/vocab/quantitykind/Dimensionless
+<http://qudt.org/vocab/quantitykind/Dimensionless> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/DimensionlessRatio
+<http://qudt.org/vocab/quantitykind/DimensionlessRatio> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/Length
+<http://qudt.org/vocab/quantitykind/Length> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/MassFlowRate
+<http://qudt.org/vocab/quantitykind/MassFlowRate> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/Power
+<http://qudt.org/vocab/quantitykind/Power> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/RotationalFrequency
+<http://qudt.org/vocab/quantitykind/RotationalFrequency> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/ThermodynamicTemperature
+<http://qudt.org/vocab/quantitykind/ThermodynamicTemperature> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/Time
+<http://qudt.org/vocab/quantitykind/Time> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/Velocity
+<http://qudt.org/vocab/quantitykind/Velocity> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/Voltage
+<http://qudt.org/vocab/quantitykind/Voltage> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/quantitykind/VolumeFlowRate
+<http://qudt.org/vocab/quantitykind/VolumeFlowRate> rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionAmplitude
+:AcousticEmissionAmplitude rdf:type owl:NamedIndividual ,
+                                    :ProcessSignalQuantity ;
+                           <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Voltage> ;
+                           rdfs:comment "The amplitude of the structure-borne sound signal of the acoustic emission system."@en ;
+                           rdfs:label "Acoustic Emission Amplitude"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#BuildHeight
+:BuildHeight rdf:type owl:NamedIndividual ,
+                      :DepositCharacteristic ;
+             <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+             rdfs:comment "The cumulative height of the deposited material above the substrate."@en ;
+             rdfs:label "Build Height"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#CarrierGasFlowRate
+:CarrierGasFlowRate rdf:type owl:NamedIndividual ,
+                             :DepositionProcessParameter ;
+                    <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+                    rdfs:comment "The volume flow rate of the gas transporting the powder to the nozzle."@en ;
+                    rdfs:label "Carrier Gas Flow Rate"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#CausticFocusPosition
+:CausticFocusPosition rdf:type owl:NamedIndividual ,
+                               :PowderCausticCharacteristic ;
+                      <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+                      rdfs:comment "The axial distance of the powder stream waist from the nozzle tip."@en ;
+                      rdfs:label "Caustic Focus Position"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#CausticOvality
+:CausticOvality rdf:type owl:NamedIndividual ,
+                         :PowderCausticCharacteristic ;
+                <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+                rdfs:comment "The second Fourier order of the powder caustic cross-section, used as an indicator of the condition of the powder nozzle."@en ;
+                rdfs:label "Caustic Ovality"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#CausticWaistDiameter
+:CausticWaistDiameter rdf:type owl:NamedIndividual ,
+                               :PowderCausticCharacteristic ;
+                      <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+                      rdfs:comment "The smallest diameter of the powder stream along its axis."@en ;
+                      rdfs:label "Caustic Waist Diameter"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#CrossValidatedPredictionError
+:CrossValidatedPredictionError rdf:type owl:NamedIndividual ,
+                                        :UncertaintyEvaluationMethod ;
+                               rdfs:comment "Uncertainty of a model-based prediction estimated from the cross-validated prediction error of the data-driven process model."@en ;
+                               rdfs:label "Cross-Validated Prediction Error"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#CuttingSpeed
+:CuttingSpeed rdf:type owl:NamedIndividual ,
+                       :MachiningProcessParameter ;
+              <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Velocity> ;
+              rdfs:comment "The speed of the cutting edge relative to the workpiece."@en ;
+              rdfs:label "Cutting Speed"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#DepthOfCut
+:DepthOfCut rdf:type owl:NamedIndividual ,
+                     :MachiningProcessParameter ;
+            <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+            rdfs:comment "The thickness of material removed in one machining pass."@en ;
+            rdfs:label "Depth of Cut"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#FeedRate
+:FeedRate rdf:type owl:NamedIndividual ,
+                   :MachiningProcessParameter ;
+          <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Velocity> ;
+          rdfs:comment "The feed velocity of the tool relative to the workpiece."@en ;
+          rdfs:label "Feed Rate"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeAEvaluation
+:GUMTypeAEvaluation rdf:type owl:NamedIndividual ,
+                             :UncertaintyEvaluationMethod ;
+                    rdfs:comment "Uncertainty evaluated by statistical analysis of a series of observations (JCGM 100:2008)."@en ;
+                    rdfs:label "GUM Type A Evaluation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeBEvaluation
+:GUMTypeBEvaluation rdf:type owl:NamedIndividual ,
+                             :UncertaintyEvaluationMethod ;
+                    rdfs:comment "Uncertainty evaluated by means other than statistical analysis of observations, e.g. from manufacturer specifications or calibration certificates (JCGM 100:2008)."@en ;
+                    rdfs:label "GUM Type B Evaluation"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#LaserPower
+:LaserPower rdf:type owl:NamedIndividual ,
+                     :DepositionProcessParameter ;
+            <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Power> ;
+            rdfs:comment "The nominal output power of the processing laser."@en ;
+            rdfs:label "Laser Power"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#LaserSpotDiameter
+:LaserSpotDiameter rdf:type owl:NamedIndividual ,
+                            :DepositionProcessParameter ;
+                   <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+                   rdfs:comment "The diameter of the laser beam on the substrate surface."@en ;
+                   rdfs:label "Laser Spot Diameter"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#LayerHeight
+:LayerHeight rdf:type owl:NamedIndividual ,
+                      :DepositCharacteristic ;
+             <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+             rdfs:comment "The height increment of one deposited layer, measured in-process by OCT or after deposition by laser line scanning."@en ;
+             rdfs:label "Layer Height"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolTemperature
+:MeltPoolTemperature rdf:type owl:NamedIndividual ,
+                              :ProcessSignalQuantity ;
+                     <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/ThermodynamicTemperature> ;
+                     rdfs:comment "The temperature of the interaction zone as measured by two-colour pyrometry."@en ;
+                     rdfs:label "Melt Pool Temperature"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolWidth
+:MeltPoolWidth rdf:type owl:NamedIndividual ,
+                        :ProcessSignalQuantity ;
+               <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+               rdfs:comment "The width of the melt pool as derived from high-speed imaging."@en ;
+               rdfs:label "Melt Pool Width"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD10
+:ParticleSizeD10 rdf:type owl:NamedIndividual ,
+                          :PowderCharacteristic ;
+                 <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+                 rdfs:comment "The particle diameter below which 10 % of the powder volume lies."@en ;
+                 rdfs:label "Particle Size D10"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD50
+:ParticleSizeD50 rdf:type owl:NamedIndividual ,
+                          :PowderCharacteristic ;
+                 <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+                 rdfs:comment "The median particle diameter of the powder volume distribution."@en ;
+                 rdfs:label "Particle Size D50"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD90
+:ParticleSizeD90 rdf:type owl:NamedIndividual ,
+                          :PowderCharacteristic ;
+                 <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+                 rdfs:comment "The particle diameter below which 90 % of the powder volume lies."@en ;
+                 rdfs:label "Particle Size D90"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#PowderMassFlowRate
+:PowderMassFlowRate rdf:type owl:NamedIndividual ,
+                             :DepositionProcessParameter ;
+                    <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/MassFlowRate> ;
+                    rdfs:comment "The mass of powder fed through the nozzle per unit time."@en ;
+                    rdfs:label "Powder Mass Flow Rate"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ProcessingSpeed
+:ProcessingSpeed rdf:type owl:NamedIndividual ,
+                          :DepositionProcessParameter ;
+                 <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Velocity> ;
+                 rdfs:comment "The relative speed between deposition head and substrate surface; in high-speed DED-LB/M typically tens of metres per minute."@en ;
+                 rdfs:label "Processing Speed"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#RelativeDensity
+:RelativeDensity rdf:type owl:NamedIndividual ,
+                          :DepositCharacteristic ;
+                 <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+                 rdfs:comment "The ratio of the density of the deposited material to the density of the fully dense material. Reference measurements are provided by material characterisation (subproject B02); C02 provides model-based predictions."@en ;
+                 rdfs:label "Relative Density"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#ShieldingGasFlowRate
+:ShieldingGasFlowRate rdf:type owl:NamedIndividual ,
+                               :DepositionProcessParameter ;
+                      <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+                      rdfs:comment "The volume flow rate of the inert gas shielding the interaction zone."@en ;
+                      rdfs:label "Shielding Gas Flow Rate"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#SpectralLag
+:SpectralLag rdf:type owl:NamedIndividual ,
+                      :ProcessSignalQuantity ;
+             <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Time> ;
+             rdfs:comment "The time delay between a laser power step and the resulting emission response of the interaction zone."@en ;
+             rdfs:label "Spectral Lag"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#SpindleSpeed
+:SpindleSpeed rdf:type owl:NamedIndividual ,
+                       :MachiningProcessParameter ;
+              <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/RotationalFrequency> ;
+              rdfs:comment "The rotational frequency of the machine spindle."@en ;
+              rdfs:label "Spindle Speed"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#TrackOffset
+:TrackOffset rdf:type owl:NamedIndividual ,
+                      :DepositionProcessParameter ;
+             <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+             rdfs:comment "The lateral distance between the centre lines of adjacent deposition tracks."@en ;
+             rdfs:label "Track Offset"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#TrackWidth
+:TrackWidth rdf:type owl:NamedIndividual ,
+                     :DepositCharacteristic ;
+            <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+            rdfs:comment "The width of a single deposited track."@en ;
+            rdfs:label "Track Width"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#VickersHardness
+:VickersHardness rdf:type owl:NamedIndividual ,
+                          :DepositCharacteristic ;
+                 rdfs:comment "The Vickers hardness of the deposited material. Reference measurements are provided by material characterisation (subproject B02); C02 provides model-based predictions. No QUDT quantity kind is assigned because hardness scales are not physical quantities in the sense of the SI."@en ;
+                 rdfs:label "Vickers Hardness"@en .
+
+
+###  http://w3id.org/circularfactory/ReprocessingSystem#WorkingDistance
+:WorkingDistance rdf:type owl:NamedIndividual ,
+                          :DepositionProcessParameter ;
+                 <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> ;
+                 rdfs:comment "The distance between nozzle tip and substrate surface."@en ;
+                 rdfs:label "Working Distance"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AcousticEmissionSystem
+                :HighSpeedCamera
+                :LaserLineScanner
+                :OpticalCoherenceTomographySystem
+                :OpticalEmissionSpectrometer
+                :PowderCausticAnalysisSystem
+                :TwoColourPyrometer
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AdditiveDepositionRun
+                :MachiningRun
+                :MonitoringRun
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AdditiveSubtractiveReprocessingProcess
+                :HighSpeedDEDProcess
+                :SubtractiveMachiningProcess
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ManufacturingResource
+                :MeasurementSystem
+                :PowderNozzle
+                :SpecializedMachineCell
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :CrossValidatedPredictionError
+                        :GUMTypeAEvaluation
+                        :GUMTypeBEvaluation
+                      )
+] .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

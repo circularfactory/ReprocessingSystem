@@ -1,0 +1,1203 @@
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/circularfactory/ReprocessingSystem/0.1.0> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2002/07/owl#imports> <http://w3id.org/circularfactory/Core> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/prov-o#> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/sosa/> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/bibliographicCitation> "Wexel, H. (2026). The Reprocessing System Ontology for a Circular Factory (Version 0.1.0). Collaborative Research Centre SFB 1574, Karlsruhe Institute of Technology. http://w3id.org/circularfactory/ReprocessingSystem" .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/created> "2026-10-14"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/creator> "Helena Wexel" .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/description> "Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) - SFB 1574 - project ID 471687386."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/modified> "2026-10-15"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/publisher> "Collaborative Research Centre SFB 1574 Circular Factory for the Perpetual Product, Karlsruhe Institute of Technology (KIT)"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/dc/terms/title> "The Reprocessing System Ontology for a Circular Factory"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/vocab/vann/preferredNamespacePrefix> "rps" .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/circularfactory/ReprocessingSystem#" .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2000/01/rdf-schema#comment> "Domain ontology of SFB 1574 subproject C02 (Reprocessing System). Formerly drafted under the namespace https://w3id.org/circularfactory/C02#. It extends the Circular Factory Core Ontology with the resources, processes, operations, process parameters, in-process observations, monitoring datasets and data-driven models of the semi-autonomous additive-subtractive reprocessing of unique metallic components (high-speed DED-LB/M combined with machining) in the InRePro cell.\nReuse strategy: Core, SOSA and PROV-O are imported. QUDT is referenced but not imported because of its size; load the QUDT schema and the quantity-kind and unit vocabularies into the triple store separately. Terms of the Perpetual Product Ontology are referenced but not imported, because version 0.0.1 re-declares Core properties with conflicting domains and ranges. The alignment to DOLCE+DnS Ultralite is provided in the separate module reprocessing-system-dul-alignment.ttl.\nExtension point for causal knowledge (planned): process parameter settings (sosa:Actuation) and observations of deposit characteristics (sosa:Observation) are first-class individuals, so causal relations between them can be added later without changing existing terms."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Reprocessing System Ontology"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2002/07/owl#versionInfo> "0.1.0" .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-1 (sensor and measurement classes): rps:Sensor and rps:Measurement are defined locally as specialisations of sosa:Sensor and sosa:Result, as recommended by INF, because it is not yet decided whether every CRC subproject needs cfc:Sensor and cfc:Measurement in the Core. If such classes are added to the Core, rps:Sensor and rps:Measurement are to be aligned to them or deprecated."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2 (uncertainty representation): the representation of measurement and prediction uncertainty (qudt:standardUncertainty, rps:hasCoverageFactor, rps:hasConfidenceLevel, rps:hasLowerPredictionBound, rps:hasUpperPredictionBound, rps:hasUncertaintyEvaluationMethod, rps:UncertaintyEvaluationMethod) is accepted by INF for now but must be aligned with the uncertainty models of subprojects B03 and A03."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-3 (Core consistency): in Core 0.9.0, cfc:Component is unsatisfiable because cfc:hasOrigin has the two domains cfc:Assembly and cfc:Component, which are disjoint. This ontology follows the intended semantics (rps:ReprocessedComponent is a subclass of cfc:Component) and does not work around it. The modelling requirements of the Core are owned by A01; the correction is pending there."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-4 (Perpetual Product Ontology): version 0.0.1 is referenced but not imported, because it re-declares Core properties with domains and ranges that conflict with Core 0.9.0 (e.g. cfc:hasFinalWorkpiece). To be imported once the two ontologies are harmonised."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-5 (further domain ontologies): an alignment to Onto3D was requested but not yet carried out because the intended ontology and namespace could not be identified unambiguously. QUDT is referenced but not imported because of its size."@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/bibliographicCitation
+<http://purl.org/dc/terms/bibliographicCitation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#editorialNote
+<http://www.w3.org/2004/02/skos/core#editorialNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://qudt.org/schema/qudt/hasQuantityKind
+<http://qudt.org/schema/qudt/hasQuantityKind> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://qudt.org/schema/qudt/hasUnit
+<http://qudt.org/schema/qudt/hasUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://w3id.org/circularfactory/Core#enablesProcess
+<http://w3id.org/circularfactory/Core#enablesProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://w3id.org/circularfactory/Core#hasInputWorkpiece
+<http://w3id.org/circularfactory/Core#hasInputWorkpiece> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://w3id.org/circularfactory/Core#implementsProcess
+<http://w3id.org/circularfactory/Core#implementsProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://w3id.org/circularfactory/Core#isSubTaskOf
+<http://w3id.org/circularfactory/Core#isSubTaskOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#appliesProcessParameterSetting
+<http://w3id.org/circularfactory/ReprocessingSystem#appliesProcessParameterSetting> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#appliesProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#appliesProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> .
+<http://w3id.org/circularfactory/ReprocessingSystem#appliesProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a process run to a nominal process parameter setting applied in it."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#appliesProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#label> "applies process parameter setting"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#comprisesManufacturingResource
+<http://w3id.org/circularfactory/ReprocessingSystem#comprisesManufacturingResource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#comprisesManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell> .
+<http://w3id.org/circularfactory/ReprocessingSystem#comprisesManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#comprisesManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates the specialized machine cell to the machines it contains."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#comprisesManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#label> "comprises manufacturing resource"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#documentsReprocessingOperation
+<http://w3id.org/circularfactory/ReprocessingSystem#documentsReprocessingOperation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#documentsReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory> .
+<http://w3id.org/circularfactory/ReprocessingSystem#documentsReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#documentsReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a reprocessing history to a reprocessing operation it records."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#documentsReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#label> "documents reprocessing operation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasPowderNozzle
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderNozzle> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderNozzle> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderNozzle> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderNozzle> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a high-speed DED machine to the powder nozzle currently installed on it."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderNozzle> <http://www.w3.org/2000/01/rdf-schema#label> "has powder nozzle"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory
+<http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/Core#Component> .
+<http://w3id.org/circularfactory/Core#Component> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a component to its reprocessing history."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#label> "has reprocessing history"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod> <http://www.w3.org/2000/01/rdf-schema#domain> <http://qudt.org/schema/qudt/QuantityValue> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a quantity value to the method by which its stated uncertainty was obtained."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod> <http://www.w3.org/2000/01/rdf-schema#label> "has uncertainty evaluation method"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUncertaintyEvaluationMethod> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isAssessedByObservation
+<http://w3id.org/circularfactory/ReprocessingSystem#isAssessedByObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isAssessedByObservation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#DepositQualityState> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isAssessedByObservation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Observation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isAssessedByObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a deposit quality state to an observation or prediction on which its evaluation is based."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isAssessedByObservation> <http://www.w3.org/2000/01/rdf-schema#label> "is assessed by observation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset
+<http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#used> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Observation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an observation whose result was derived by feature extraction to the raw dataset it was computed from."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isComputedFromMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#label> "is computed from monitoring dataset"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn
+<http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/sosa/isHostedBy> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a measurement system to the manufacturing resource on which it is currently mounted. Relevant for portable systems such as the acoustic emission system. Replaces the middleware term 'currentlyMountedOn'."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isCurrentlyMountedOn> <http://www.w3.org/2000/01/rdf-schema#label> "is currently mounted on"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasGeneratedBy> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a deposited layer to the additive deposition run that produced it."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedDuringRun> <http://www.w3.org/2000/01/rdf-schema#label> "is deposited during run"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isDepositedOnWorkpiece
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedOnWorkpiece> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedOnWorkpiece> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedOnWorkpiece> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/Core#Workpiece> .
+<http://w3id.org/circularfactory/Core#Workpiece> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedOnWorkpiece> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a deposited layer to the workpiece it was built onto."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isDepositedOnWorkpiece> <http://www.w3.org/2000/01/rdf-schema#label> "is deposited on workpiece"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isObservedDuringProcessRun
+<http://w3id.org/circularfactory/ReprocessingSystem#isObservedDuringProcessRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isObservedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Observation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isObservedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isObservedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an observation to the process run during which the observed phenomenon occurred."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isObservedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#label> "is observed during process run"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation
+<http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://w3id.org/circularfactory/Core#isSubTaskOf> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a process run to the reprocessing operation it belongs to. Replaces the middleware term 'partOfReprocessingOperation'."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isStepOfReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#label> "is step of reprocessing operation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset
+<http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasDerivedFrom> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a data-driven process model to a dataset used for its training."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#isTrainedOnMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#label> "is trained on monitoring dataset"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent
+<http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://w3id.org/circularfactory/Core#hasInputWorkpiece> .
+<http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/Core#Workpiece> .
+<http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a reprocessing operation to the component it reprocesses. The component identity is managed by production control. The range is cfc:Workpiece; the middleware draft used cfc:Resource, which is disjoint with cfc:Workpiece in Core 0.9.0."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent> <http://www.w3.org/2000/01/rdf-schema#label> "reprocesses component"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasInformedBy> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Observation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a model-based prediction to an observation used as model input."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputObservation> <http://www.w3.org/2000/01/rdf-schema#label> "uses input observation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasInformedBy> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a model-based prediction to a process parameter setting used as model input."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesInputParameterSetting> <http://www.w3.org/2000/01/rdf-schema#label> "uses input parameter setting"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock
+<http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#used> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates an additive deposition run to the powder batch it consumed."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#usesPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#label> "uses powder feedstock"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasAttributedTo> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a process monitoring dataset to the measurement system that recorded it."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedByMeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#label> "was recorded by measurement system"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/ns/prov#wasGeneratedBy> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a process monitoring dataset to the process run in which it was recorded."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#wasRecordedDuringProcessRun> <http://www.w3.org/2000/01/rdf-schema#label> "was recorded during process run"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://qudt.org/schema/qudt/standardUncertainty
+<http://qudt.org/schema/qudt/standardUncertainty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasCausticOvality
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCausticOvality> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCausticOvality> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticImageStack> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCausticOvality> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCausticOvality> <http://www.w3.org/2000/01/rdf-schema#comment> "Shortcut for the second Fourier order of the powder caustic cross-section (dimensionless) derived from a powder caustic image stack. Kept for compatibility with the C02 middleware ('causticOvality'); the canonical representation is an observation of rps:CausticOvality."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCausticOvality> <http://www.w3.org/2000/01/rdf-schema#label> "has caustic ovality"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#comment> "The coefficient of determination R² of a data-driven process model on its training data."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#label> "has coefficient of determination"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel
+<http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel> <http://www.w3.org/2000/01/rdf-schema#domain> <http://qudt.org/schema/qudt/QuantityValue> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel> <http://www.w3.org/2000/01/rdf-schema#comment> "The confidence level (between 0 and 1) associated with an expanded uncertainty or a prediction interval."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel> <http://www.w3.org/2000/01/rdf-schema#label> "has confidence level"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasConfidenceLevel> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor> <http://www.w3.org/2000/01/rdf-schema#domain> <http://qudt.org/schema/qudt/QuantityValue> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor> <http://www.w3.org/2000/01/rdf-schema#comment> "The coverage factor k used to obtain an expanded uncertainty from the standard uncertainty (qudt:standardUncertainty) according to the GUM."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor> <http://www.w3.org/2000/01/rdf-schema#label> "has coverage factor"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasCoverageFactor> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime
+<http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime> <http://www.w3.org/2000/01/rdf-schema#comment> "The completion time of a reprocessing operation as estimated by the specialized machine cell and reported to production control. Replaces the middleware term 'estimatedCompletionAt'."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasEstimatedCompletionTime> <http://www.w3.org/2000/01/rdf-schema#label> "has estimated completion time"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#positiveInteger> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex> <http://www.w3.org/2000/01/rdf-schema#comment> "The position of a deposited layer in the build-up sequence, starting with 1."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLayerIndex> <http://www.w3.org/2000/01/rdf-schema#label> "has layer index"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound> <http://www.w3.org/2000/01/rdf-schema#domain> <http://qudt.org/schema/qudt/QuantityValue> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound> <http://www.w3.org/2000/01/rdf-schema#comment> "The lower bound of the prediction interval of a model-based prediction, in the unit of the quantity value."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound> <http://www.w3.org/2000/01/rdf-schema#label> "has lower prediction bound"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasLowerPredictionBound> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasMaterialDesignation
+<http://w3id.org/circularfactory/ReprocessingSystem#hasMaterialDesignation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasMaterialDesignation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasMaterialDesignation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasMaterialDesignation> <http://www.w3.org/2000/01/rdf-schema#comment> "The standardised designation of the powder alloy, e.g. a material number."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasMaterialDesignation> <http://www.w3.org/2000/01/rdf-schema#label> "has material designation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasOCTLayerHeight
+<http://w3id.org/circularfactory/ReprocessingSystem#hasOCTLayerHeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasOCTLayerHeight> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#OCTMeasurementSeries> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasOCTLayerHeight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasOCTLayerHeight> <http://www.w3.org/2000/01/rdf-schema#comment> "Shortcut for the mean layer height in micrometres derived from an OCT measurement series. Kept for compatibility with the C02 middleware ('layerHeight'); the canonical representation is a process monitoring observation of rps:LayerHeight with a qudt:QuantityValue result."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasOCTLayerHeight> <http://www.w3.org/2000/01/rdf-schema#label> "has OCT layer height"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier> <http://www.w3.org/2000/01/rdf-schema#comment> "The batch or lot number of a powder feedstock."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPowderBatchIdentifier> <http://www.w3.org/2000/01/rdf-schema#label> "has powder batch identifier"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#comment> "The cross-validated coefficient of determination (Q² or R²pred) of a data-driven process model."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasPredictiveCoefficientOfDetermination> <http://www.w3.org/2000/01/rdf-schema#label> "has predictive coefficient of determination"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataFormat
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataFormat> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataFormat> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataFormat> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataFormat> <http://www.w3.org/2000/01/rdf-schema#comment> "The file format of the raw data, e.g. HDF5, CSV or TDMS."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataFormat> <http://www.w3.org/2000/01/rdf-schema#label> "has raw data format"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataStorageLocation
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataStorageLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataStorageLocation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataStorageLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataStorageLocation> <http://www.w3.org/2000/01/rdf-schema#comment> "The location (URI or path) under which the raw data of a process monitoring dataset are stored. Replaces the middleware term 'storageLocation'."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasRawDataStorageLocation> <http://www.w3.org/2000/01/rdf-schema#label> "has raw data storage location"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasSpectralLag
+<http://w3id.org/circularfactory/ReprocessingSystem#hasSpectralLag> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasSpectralLag> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#EmissionSpectrumLog> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasSpectralLag> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasSpectralLag> <http://www.w3.org/2000/01/rdf-schema#comment> "Shortcut for the spectral lag in milliseconds between a laser power step and the emission response, derived from an emission spectrum log. Kept for compatibility with the C02 middleware ('spectralLag'); the canonical representation is an observation of rps:SpectralLag."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasSpectralLag> <http://www.w3.org/2000/01/rdf-schema#label> "has spectral lag"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder
+<http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#positiveInteger> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder> <http://www.w3.org/2000/01/rdf-schema#comment> "The position of a process run within its reprocessing operation. Replaces the middleware term 'stepOrder'."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasStepOrder> <http://www.w3.org/2000/01/rdf-schema#label> "has step order"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound> <http://www.w3.org/2000/01/rdf-schema#domain> <http://qudt.org/schema/qudt/QuantityValue> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound> <http://www.w3.org/2000/01/rdf-schema#comment> "The upper bound of the prediction interval of a model-based prediction, in the unit of the quantity value."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound> <http://www.w3.org/2000/01/rdf-schema#label> "has upper prediction bound"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#hasUpperPredictionBound> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://qudt.org/schema/qudt/QuantityKind
+<http://qudt.org/schema/qudt/QuantityKind> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://qudt.org/schema/qudt/QuantityValue
+<http://qudt.org/schema/qudt/QuantityValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#AtomicTask
+<http://w3id.org/circularfactory/Core#AtomicTask> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#Component
+# 
+# http://w3id.org/circularfactory/Core#CompositeTask
+<http://w3id.org/circularfactory/Core#CompositeTask> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#EquippedCapability
+<http://w3id.org/circularfactory/Core#EquippedCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#Operation
+<http://w3id.org/circularfactory/Core#Operation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#QualityState
+<http://w3id.org/circularfactory/Core#QualityState> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#Resource
+<http://w3id.org/circularfactory/Core#Resource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#SupportingProcess
+<http://w3id.org/circularfactory/Core#SupportingProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#UnitPreservingProcess
+<http://w3id.org/circularfactory/Core#UnitPreservingProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#VirginMaterial
+<http://w3id.org/circularfactory/Core#VirginMaterial> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/Core#Workpiece
+# 
+# http://w3id.org/circularfactory/PerpetualProduct#ManufacturingHistory
+<http://w3id.org/circularfactory/PerpetualProduct#ManufacturingHistory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionRecording
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionRecording> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionRecording> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionRecording> <http://www.w3.org/2000/01/rdf-schema#comment> "A structure-borne sound recording of an acoustic emission system."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionRecording> <http://www.w3.org/2000/01/rdf-schema#label> "Acoustic Emission Recording"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionSystem
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionSystem> <http://www.w3.org/2000/01/rdf-schema#comment> "A structure-borne sound sensor system (e.g. QASS). It is the only measurement system used in both deposition and machining and is remounted between the two machines."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Acoustic Emission System"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid1 .
+_:genid1 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess> .
+_:genid1 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#implementsProcess> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> <http://www.w3.org/2000/01/rdf-schema#comment> "A process run in which material is deposited by high-speed DED-LB/M."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> <http://www.w3.org/2000/01/rdf-schema#label> "Additive Deposition Run"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#UnitPreservingProcess> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "A production process that restores a damaged component by removing the damaged volume, rebuilding it by high-speed DED-LB/M and finish machining the functional surfaces. One component enters and one component leaves the process."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess> <http://www.w3.org/2000/01/rdf-schema#label> "Additive-Subtractive Reprocessing Process"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#DamageRemovalMachiningProcess
+<http://w3id.org/circularfactory/ReprocessingSystem#DamageRemovalMachiningProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DamageRemovalMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DamageRemovalMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "Machining that removes the damaged or affected volume of a component before additive build-up, based on inspection information on damage location and type."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#DamageRemovalMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#label> "Damage Removal Machining Process"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel
+<http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#Sensor> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> <http://www.w3.org/2000/01/rdf-schema#comment> "A statistical or machine-learning model that predicts deposit characteristics from process parameters and process monitoring features. Modelled as a virtual sensor in the sense of SOSA."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> <http://www.w3.org/2000/01/rdf-schema#label> "Data-Driven Process Model"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> <http://www.w3.org/2000/01/rdf-schema#comment> "An observable property of deposited material, e.g. layer height, track width or relative density."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> <http://www.w3.org/2000/01/rdf-schema#label> "Deposit Characteristic"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#DepositQualityState
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositQualityState> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositQualityState> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#QualityState> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositQualityState> <http://www.w3.org/2000/01/rdf-schema#comment> "The quality state of a workpiece after deposition, evaluated at a given time and supported by observations of deposit characteristics."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositQualityState> <http://www.w3.org/2000/01/rdf-schema#label> "Deposit Quality State"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> <http://www.w3.org/2000/01/rdf-schema#comment> "A layer of material deposited onto a workpiece during one additive deposition run. Characteristics such as layer height or relative density are observed on it."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositedLayer> <http://www.w3.org/2000/01/rdf-schema#label> "Deposited Layer"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> <http://www.w3.org/2000/01/rdf-schema#comment> "A process parameter of high-speed DED-LB/M, e.g. laser power, processing speed or powder mass flow rate."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> <http://www.w3.org/2000/01/rdf-schema#label> "Deposition Process Parameter"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#EmissionSpectrumLog
+<http://w3id.org/circularfactory/ReprocessingSystem#EmissionSpectrumLog> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#EmissionSpectrumLog> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#EmissionSpectrumLog> <http://www.w3.org/2000/01/rdf-schema#comment> "A time-resolved log of emission spectra recorded by an optical emission spectrometer."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#EmissionSpectrumLog> <http://www.w3.org/2000/01/rdf-schema#label> "Emission Spectrum Log"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#FeatureExtractionProcedure
+<http://w3id.org/circularfactory/ReprocessingSystem#FeatureExtractionProcedure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FeatureExtractionProcedure> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Procedure> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FeatureExtractionProcedure> <http://www.w3.org/2000/01/rdf-schema#comment> "A documented signal or image processing procedure that derives a characteristic value from raw sensor data, e.g. the evaluation of the second Fourier order of the caustic cross-section."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#FeatureExtractionProcedure> <http://www.w3.org/2000/01/rdf-schema#label> "Feature Extraction Procedure"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#FinishMachiningProcess
+<http://w3id.org/circularfactory/ReprocessingSystem#FinishMachiningProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FinishMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FinishMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "Machining after additive build-up that restores the geometry and surface of the functional surfaces."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#FinishMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#label> "Finish Machining Process"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#FullReprocessingCapability
+<http://w3id.org/circularfactory/ReprocessingSystem#FullReprocessingCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FullReprocessingCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#EquippedCapability> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FullReprocessingCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid2 .
+_:genid2 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess> .
+_:genid2 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#enablesProcess> .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FullReprocessingCapability> <http://www.w3.org/2000/01/rdf-schema#comment> "The capability of the specialized machine cell to reprocess a damaged component by damage removal, high-speed DED-LB/M build-up and finish machining."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#FullReprocessingCapability> <http://www.w3.org/2000/01/rdf-schema#label> "Full Reprocessing Capability"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedCamera
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedCamera> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedCamera> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedCamera> <http://www.w3.org/2000/01/rdf-schema#comment> "A camera for high-speed imaging of the melt pool and the powder-laser interaction."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedCamera> <http://www.w3.org/2000/01/rdf-schema#label> "High-Speed Camera"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDCapability
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#EquippedCapability> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid3 .
+_:genid3 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess> .
+_:genid3 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#enablesProcess> .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDCapability> <http://www.w3.org/2000/01/rdf-schema#comment> "The capability of a high-speed DED machine to deposit material by HS DED-LB/M."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDCapability> <http://www.w3.org/2000/01/rdf-schema#label> "High-Speed DED Capability"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Actuator> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine> <http://www.w3.org/2000/01/rdf-schema#comment> "A machine for high-speed directed energy deposition with laser beam and metal powder (HS DED-LB/M, EHLA), e.g. the 5-axis pE3D system of ponticon GmbH in the InRePro cell."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDMachine> <http://www.w3.org/2000/01/rdf-schema#label> "High-Speed DED Machine"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#UnitPreservingProcess> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "High-speed directed energy deposition with laser beam and metal powder (HS DED-LB/M, EHLA), in which the powder focus lies above the melt pool so that the powder is largely molten before it reaches the substrate."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess> <http://www.w3.org/2000/01/rdf-schema#label> "High-Speed DED Process"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedVideoRecording
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedVideoRecording> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedVideoRecording> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedVideoRecording> <http://www.w3.org/2000/01/rdf-schema#comment> "An image sequence recorded by a high-speed camera."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedVideoRecording> <http://www.w3.org/2000/01/rdf-schema#label> "High-Speed Video Recording"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanProfile
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanProfile> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanProfile> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanProfile> <http://www.w3.org/2000/01/rdf-schema#comment> "A set of surface profiles recorded by a laser line scanner."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanProfile> <http://www.w3.org/2000/01/rdf-schema#label> "Laser Line Scan Profile"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanner
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanner> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanner> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanner> <http://www.w3.org/2000/01/rdf-schema#comment> "A laser triangulation sensor that captures the surface profile of deposited tracks and layers."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanner> <http://www.w3.org/2000/01/rdf-schema#label> "Laser Line Scanner"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> <http://www.w3.org/2000/01/rdf-schema#comment> "A process parameter of milling or turning, e.g. cutting speed or depth of cut."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> <http://www.w3.org/2000/01/rdf-schema#label> "Machining Process Parameter"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid4 .
+_:genid4 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> .
+_:genid4 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#implementsProcess> .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun> <http://www.w3.org/2000/01/rdf-schema#comment> "A process run in which material is removed by milling or turning."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun> <http://www.w3.org/2000/01/rdf-schema#label> "Machining Run"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource
+<http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#Resource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Platform> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#comment> "A machine of the reprocessing cell that changes the geometry or material state of a workpiece and hosts measurement systems."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> <http://www.w3.org/2000/01/rdf-schema#label> "Manufacturing Resource"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MaterialRemovalCapability
+<http://w3id.org/circularfactory/ReprocessingSystem#MaterialRemovalCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MaterialRemovalCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#EquippedCapability> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MaterialRemovalCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid5 .
+_:genid5 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> .
+_:genid5 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#enablesProcess> .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MaterialRemovalCapability> <http://www.w3.org/2000/01/rdf-schema#comment> "The capability of the specialized machine cell to perform machining only, without additive build-up."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MaterialRemovalCapability> <http://www.w3.org/2000/01/rdf-schema#label> "Material Removal Capability"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#Measurement
+<http://w3id.org/circularfactory/ReprocessingSystem#Measurement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#Measurement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Result> .
+<http://w3id.org/circularfactory/ReprocessingSystem#Measurement> <http://www.w3.org/2000/01/rdf-schema#comment> "Data produced by a measurement observation."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#Measurement> <http://www.w3.org/2000/01/rdf-schema#label> "Measurement result"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#Measurement> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-1: local class recommended by INF while it is open whether a measurement class is added to the Core. OPEN ISSUE OI-2: whether quantity-value results of observations shall additionally be typed as rps:Measurement is to be decided together with the uncertainty alignment with B03 and A03."@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem
+<http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#Resource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#Sensor> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#comment> "A physical measurement system of the reprocessing cell that observes the process, the powder stream or the workpiece. Portable systems may be moved between manufacturing resources."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Measurement System"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MeltPool
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPool> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPool> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPool> <http://www.w3.org/2000/01/rdf-schema#comment> "The liquid metal region of the interaction zone during deposition, observed by pyrometry, high-speed imaging and emission spectroscopy."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPool> <http://www.w3.org/2000/01/rdf-schema#label> "Melt Pool"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock
+<http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#VirginMaterial> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#comment> "A batch of metal powder used as filler material in high-speed DED-LB/M, characterised among others by its particle size distribution."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MetalPowderFeedstock> <http://www.w3.org/2000/01/rdf-schema#label> "Metal Powder Feedstock"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCapability
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#EquippedCapability> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid6 .
+_:genid6 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> .
+_:genid6 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#enablesProcess> .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCapability> <http://www.w3.org/2000/01/rdf-schema#comment> "The capability of a mill-turn machining centre to remove material by milling and turning."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCapability> <http://www.w3.org/2000/01/rdf-schema#label> "Mill-Turn Machining Capability"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCentre
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCentre> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCentre> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCentre> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Actuator> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCentre> <http://www.w3.org/2000/01/rdf-schema#comment> "A machine tool for milling and turning used for damage removal before and finish machining after deposition, e.g. the 5-axis DMU 60 eVo of DMG MORI in the InRePro cell."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MillTurnMachiningCentre> <http://www.w3.org/2000/01/rdf-schema#label> "Mill-Turn Machining Centre"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction
+<http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Observation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid7 .
+_:genid7 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> .
+_:genid7 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/sosa/madeBySensor> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction> <http://www.w3.org/2000/01/rdf-schema#comment> "An estimate of an observable property made by a data-driven process model (virtual sensor) from process parameter settings and process monitoring observations. The result carries the prediction uncertainty."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ModelBasedPrediction> <http://www.w3.org/2000/01/rdf-schema#label> "Model-Based Prediction"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun
+<http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid8 .
+_:genid8 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess> .
+_:genid8 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#implementsProcess> .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun> <http://www.w3.org/2000/01/rdf-schema#comment> "A process run in which a measurement system records data during or before a deposition or machining run."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun> <http://www.w3.org/2000/01/rdf-schema#label> "Monitoring Run"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess
+<http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#SupportingProcess> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "A supporting process in which one or more measurement systems observe a deposition or machining process without changing the workpiece."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess> <http://www.w3.org/2000/01/rdf-schema#label> "Multisensory Process Monitoring Process"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#OCTMeasurementSeries
+<http://w3id.org/circularfactory/ReprocessingSystem#OCTMeasurementSeries> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#OCTMeasurementSeries> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#OCTMeasurementSeries> <http://www.w3.org/2000/01/rdf-schema#comment> "A series of distance measurements recorded by an optical coherence tomography system."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#OCTMeasurementSeries> <http://www.w3.org/2000/01/rdf-schema#label> "OCT Measurement Series"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#OpticalCoherenceTomographySystem
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalCoherenceTomographySystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalCoherenceTomographySystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalCoherenceTomographySystem> <http://www.w3.org/2000/01/rdf-schema#comment> "An inline interferometric distance measurement system (e.g. Precitec IDM1550) used for in-process measurement of layer height in high-speed DED-LB/M."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalCoherenceTomographySystem> <http://www.w3.org/2000/01/rdf-schema#label> "Optical Coherence Tomography System"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#OpticalEmissionSpectrometer
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalEmissionSpectrometer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalEmissionSpectrometer> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalEmissionSpectrometer> <http://www.w3.org/2000/01/rdf-schema#comment> "A spectrometer for synchronised multispectral emission analysis of the interaction zone, used among others to determine the spectral lag."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#OpticalEmissionSpectrometer> <http://www.w3.org/2000/01/rdf-schema#label> "Optical Emission Spectrometer"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PartialLeastSquaresRegressionModel
+<http://w3id.org/circularfactory/ReprocessingSystem#PartialLeastSquaresRegressionModel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PartialLeastSquaresRegressionModel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PartialLeastSquaresRegressionModel> <http://www.w3.org/2000/01/rdf-schema#comment> "A data-driven process model based on partial least squares (PLS) regression."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PartialLeastSquaresRegressionModel> <http://www.w3.org/2000/01/rdf-schema#label> "Partial Least Squares Regression Model"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisProcess
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisProcess> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "A supporting process that characterises the powder caustic before deposition in order to assess the condition of the powder nozzle."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisProcess> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Caustic Analysis Process"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisSystem
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisSystem> <http://www.w3.org/2000/01/rdf-schema#comment> "A light-section system (e.g. ponticon PowderSpy) that images cross-sections of the powder stream to characterise the powder caustic and the nozzle condition."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Caustic Analysis System"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic> <http://www.w3.org/2000/01/rdf-schema#comment> "An observable property of the powder stream that indicates the condition of the powder nozzle, e.g. caustic waist diameter or caustic ovality."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Caustic Characteristic"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticImageStack
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticImageStack> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticImageStack> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticImageStack> <http://www.w3.org/2000/01/rdf-schema#comment> "A stack of powder stream cross-section images recorded by a powder caustic analysis system."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticImageStack> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Caustic Image Stack"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic> <http://www.w3.org/2000/01/rdf-schema#comment> "An observable property of the metal powder feedstock, e.g. a characteristic value of the particle size distribution."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Characteristic"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#Resource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle> <http://www.w3.org/2000/01/rdf-schema#comment> "A coaxial powder nozzle of a high-speed DED machine. Its abrasive wear changes the powder caustic and is assessed by powder caustic analysis before deposition."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Nozzle"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderStream
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderStream> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderStream> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderStream> <http://www.w3.org/2000/01/rdf-schema#comment> "The powder-gas jet leaving the powder nozzle, whose caustic (waist diameter, focus position, cross-section shape) is observed by powder caustic analysis."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderStream> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Stream"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringCapability
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#EquippedCapability> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringCapability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid9 .
+_:genid9 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#MultisensoryProcessMonitoringProcess> .
+_:genid9 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#enablesProcess> .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringCapability> <http://www.w3.org/2000/01/rdf-schema#comment> "The capability of a measurement system to observe a deposition or machining process."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringCapability> <http://www.w3.org/2000/01/rdf-schema#label> "Process Monitoring Capability"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#Measurement> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#comment> "A raw data artifact recorded by a measurement system during a process run. Only the storage location of the raw data is kept in the knowledge graph. Replaces the middleware term 'Dataset'."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> <http://www.w3.org/2000/01/rdf-schema#label> "Process Monitoring Dataset"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringObservation
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Observation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid10 .
+_:genid10 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+_:genid10 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/sosa/madeBySensor> .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "An observation made by a physical measurement system of the reprocessing cell. The result is given as qudt:QuantityValue, optionally with its measurement uncertainty."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringObservation> <http://www.w3.org/2000/01/rdf-schema#label> "Process Monitoring Observation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/ActuatableProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter> <http://www.w3.org/2000/01/rdf-schema#comment> "A controllable property of a manufacturing process that is set by the machine control."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter> <http://www.w3.org/2000/01/rdf-schema#label> "Process Parameter"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Actuation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid11 .
+_:genid11 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameter> .
+_:genid11 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/sosa/actsOnProperty> .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid12 .
+_:genid12 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> .
+_:genid12 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/sosa/madeByActuator> .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#comment> "The setting of one process parameter to a nominal value by a manufacturing resource during a process run. The nominal value is given as qudt:QuantityValue via sosa:hasResult. Settings are individuals so that they can later serve as causes in causal relations."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessParameterSetting> <http://www.w3.org/2000/01/rdf-schema#label> "Process Parameter Setting"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#AtomicTask> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#Operation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Activity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> <http://www.w3.org/2000/01/rdf-schema#comment> "An executed, indivisible step of a reprocessing operation on one resource of the cell, for example one deposition run, one machining run or one monitoring run."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessRun> <http://www.w3.org/2000/01/rdf-schema#label> "Process Run"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> <http://www.w3.org/2000/01/rdf-schema#comment> "An observable property of the running process itself, e.g. melt pool temperature, spectral lag or acoustic emission amplitude."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> <http://www.w3.org/2000/01/rdf-schema#label> "Process Signal Quantity"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PyrometryTimeSeries
+<http://w3id.org/circularfactory/ReprocessingSystem#PyrometryTimeSeries> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PyrometryTimeSeries> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessMonitoringDataset> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PyrometryTimeSeries> <http://www.w3.org/2000/01/rdf-schema#comment> "A temperature time series recorded by a two-colour pyrometer."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PyrometryTimeSeries> <http://www.w3.org/2000/01/rdf-schema#label> "Pyrometry Time Series"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#Component> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent> <http://www.w3.org/2000/01/rdf-schema#comment> "A component that is or was subject to a reprocessing operation. The component identity is managed by production control; this class adds the C02 view on it."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent> <http://www.w3.org/2000/01/rdf-schema#label> "Reprocessed Component"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessedComponent> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-3: unsatisfiable under Core 0.9.0 because cfc:Component is unsatisfiable there; correction pending in the Core."@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/PerpetualProduct#ManufacturingHistory> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#comment> "The part of the manufacturing history of a component that documents the reprocessing operations it has undergone in the specialized machine cell."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingHistory> <http://www.w3.org/2000/01/rdf-schema#label> "Reprocessing History"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#CompositeTask> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#Operation> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid13 .
+_:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://w3id.org/circularfactory/Core#Workpiece> .
+_:genid13 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/ReprocessingSystem#reprocessesComponent> .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid14 .
+_:genid14 <http://www.w3.org/2002/07/owl#allValuesFrom> _:genid15 .
+_:genid15 <http://www.w3.org/2002/07/owl#unionOf> _:genid17 .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid16 .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess> .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid14 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/circularfactory/Core#implementsProcess> .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#comment> "An operation dispatched by production control to the specialized machine cell to reprocess one component. Its IRI serves as correlation key between production control and subproject C02; it is decomposed into process runs."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ReprocessingOperation> <http://www.w3.org/2000/01/rdf-schema#label> "Reprocessing Operation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ResponseSurfaceModel
+<http://w3id.org/circularfactory/ReprocessingSystem#ResponseSurfaceModel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ResponseSurfaceModel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#DataDrivenProcessModel> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ResponseSurfaceModel> <http://www.w3.org/2000/01/rdf-schema#comment> "An empirical regression model derived from a design of experiments, e.g. a central composite design."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ResponseSurfaceModel> <http://www.w3.org/2000/01/rdf-schema#label> "Response Surface Model"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#Sensor
+<http://w3id.org/circularfactory/ReprocessingSystem#Sensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#Sensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://w3id.org/circularfactory/ReprocessingSystem#Sensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Any physical or virtual device, agent or software that observes a property in the C02 reprocessing context."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#Sensor> <http://www.w3.org/2000/01/rdf-schema#label> "Sensor"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#Sensor> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-1: local class recommended by INF while it is open whether a sensor class is added to the Core."@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell
+<http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#Resource> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell> <http://www.w3.org/2000/01/rdf-schema#comment> "The InRePro reprocessing cell of subproject C02 as the single externally addressed resource of the circular factory. It receives reprocessing operations from production control and decides internally on the sequence of process runs and the measurement systems involved. Replaces the middleware term 'SpecializedMachines' (singular noun required by the SFB modeling convention)."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell> <http://www.w3.org/2000/01/rdf-schema#label> "Specialized Machine Cell"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess
+<http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/Core#UnitPreservingProcess> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#comment> "A production process that removes material from a component by milling or turning."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> <http://www.w3.org/2000/01/rdf-schema#label> "Subtractive Machining Process"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#TwoColourPyrometer
+<http://w3id.org/circularfactory/ReprocessingSystem#TwoColourPyrometer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TwoColourPyrometer> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TwoColourPyrometer> <http://www.w3.org/2000/01/rdf-schema#comment> "A coaxial ratio pyrometer measuring the temperature of the interaction zone largely independently of emissivity."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#TwoColourPyrometer> <http://www.w3.org/2000/01/rdf-schema#label> "Two-Colour Pyrometer"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod
+<http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> <http://www.w3.org/2000/01/rdf-schema#comment> "The method by which the uncertainty stated for a quantity value was obtained."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> <http://www.w3.org/2000/01/rdf-schema#label> "Uncertainty Evaluation Method"@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> <http://www.w3.org/2004/02/skos/core#editorialNote> "OPEN ISSUE OI-2: to be aligned with the uncertainty models of B03 and A03."@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://qudt.org/vocab/quantitykind/Dimensionless
+<http://qudt.org/vocab/quantitykind/Dimensionless> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/DimensionlessRatio
+<http://qudt.org/vocab/quantitykind/DimensionlessRatio> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/Length
+<http://qudt.org/vocab/quantitykind/Length> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/MassFlowRate
+<http://qudt.org/vocab/quantitykind/MassFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/Power
+<http://qudt.org/vocab/quantitykind/Power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/RotationalFrequency
+<http://qudt.org/vocab/quantitykind/RotationalFrequency> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/ThermodynamicTemperature
+<http://qudt.org/vocab/quantitykind/ThermodynamicTemperature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/Time
+<http://qudt.org/vocab/quantitykind/Time> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/Velocity
+<http://qudt.org/vocab/quantitykind/Velocity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/Voltage
+<http://qudt.org/vocab/quantitykind/Voltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://qudt.org/vocab/quantitykind/VolumeFlowRate
+<http://qudt.org/vocab/quantitykind/VolumeFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionAmplitude
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionAmplitude> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionAmplitude> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionAmplitude> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Voltage> .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionAmplitude> <http://www.w3.org/2000/01/rdf-schema#comment> "The amplitude of the structure-borne sound signal of the acoustic emission system."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionAmplitude> <http://www.w3.org/2000/01/rdf-schema#label> "Acoustic Emission Amplitude"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#BuildHeight
+<http://w3id.org/circularfactory/ReprocessingSystem#BuildHeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#BuildHeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#BuildHeight> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#BuildHeight> <http://www.w3.org/2000/01/rdf-schema#comment> "The cumulative height of the deposited material above the substrate."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#BuildHeight> <http://www.w3.org/2000/01/rdf-schema#label> "Build Height"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#CarrierGasFlowRate
+<http://w3id.org/circularfactory/ReprocessingSystem#CarrierGasFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CarrierGasFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CarrierGasFlowRate> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/VolumeFlowRate> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CarrierGasFlowRate> <http://www.w3.org/2000/01/rdf-schema#comment> "The volume flow rate of the gas transporting the powder to the nozzle."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#CarrierGasFlowRate> <http://www.w3.org/2000/01/rdf-schema#label> "Carrier Gas Flow Rate"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#CausticFocusPosition
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticFocusPosition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticFocusPosition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticFocusPosition> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticFocusPosition> <http://www.w3.org/2000/01/rdf-schema#comment> "The axial distance of the powder stream waist from the nozzle tip."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticFocusPosition> <http://www.w3.org/2000/01/rdf-schema#label> "Caustic Focus Position"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#CausticOvality
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticOvality> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticOvality> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticOvality> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Dimensionless> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticOvality> <http://www.w3.org/2000/01/rdf-schema#comment> "The second Fourier order of the powder caustic cross-section, used as an indicator of the condition of the powder nozzle."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticOvality> <http://www.w3.org/2000/01/rdf-schema#label> "Caustic Ovality"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#CausticWaistDiameter
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticWaistDiameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticWaistDiameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticWaistDiameter> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticWaistDiameter> <http://www.w3.org/2000/01/rdf-schema#comment> "The smallest diameter of the powder stream along its axis."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#CausticWaistDiameter> <http://www.w3.org/2000/01/rdf-schema#label> "Caustic Waist Diameter"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#CrossValidatedPredictionError
+<http://w3id.org/circularfactory/ReprocessingSystem#CrossValidatedPredictionError> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CrossValidatedPredictionError> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CrossValidatedPredictionError> <http://www.w3.org/2000/01/rdf-schema#comment> "Uncertainty of a model-based prediction estimated from the cross-validated prediction error of the data-driven process model."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#CrossValidatedPredictionError> <http://www.w3.org/2000/01/rdf-schema#label> "Cross-Validated Prediction Error"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#CuttingSpeed
+<http://w3id.org/circularfactory/ReprocessingSystem#CuttingSpeed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CuttingSpeed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CuttingSpeed> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Velocity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#CuttingSpeed> <http://www.w3.org/2000/01/rdf-schema#comment> "The speed of the cutting edge relative to the workpiece."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#CuttingSpeed> <http://www.w3.org/2000/01/rdf-schema#label> "Cutting Speed"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#DepthOfCut
+<http://w3id.org/circularfactory/ReprocessingSystem#DepthOfCut> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepthOfCut> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepthOfCut> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepthOfCut> <http://www.w3.org/2000/01/rdf-schema#comment> "The thickness of material removed in one machining pass."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#DepthOfCut> <http://www.w3.org/2000/01/rdf-schema#label> "Depth of Cut"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#FeedRate
+<http://w3id.org/circularfactory/ReprocessingSystem#FeedRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FeedRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FeedRate> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Velocity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#FeedRate> <http://www.w3.org/2000/01/rdf-schema#comment> "The feed velocity of the tool relative to the workpiece."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#FeedRate> <http://www.w3.org/2000/01/rdf-schema#label> "Feed Rate"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeAEvaluation
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeAEvaluation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeAEvaluation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> .
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeAEvaluation> <http://www.w3.org/2000/01/rdf-schema#comment> "Uncertainty evaluated by statistical analysis of a series of observations (JCGM 100:2008)."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeAEvaluation> <http://www.w3.org/2000/01/rdf-schema#label> "GUM Type A Evaluation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeBEvaluation
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeBEvaluation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeBEvaluation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#UncertaintyEvaluationMethod> .
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeBEvaluation> <http://www.w3.org/2000/01/rdf-schema#comment> "Uncertainty evaluated by means other than statistical analysis of observations, e.g. from manufacturer specifications or calibration certificates (JCGM 100:2008)."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeBEvaluation> <http://www.w3.org/2000/01/rdf-schema#label> "GUM Type B Evaluation"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#LaserPower
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserPower> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Power> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserPower> <http://www.w3.org/2000/01/rdf-schema#comment> "The nominal output power of the processing laser."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserPower> <http://www.w3.org/2000/01/rdf-schema#label> "Laser Power"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#LaserSpotDiameter
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserSpotDiameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserSpotDiameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserSpotDiameter> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserSpotDiameter> <http://www.w3.org/2000/01/rdf-schema#comment> "The diameter of the laser beam on the substrate surface."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#LaserSpotDiameter> <http://www.w3.org/2000/01/rdf-schema#label> "Laser Spot Diameter"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#LayerHeight
+<http://w3id.org/circularfactory/ReprocessingSystem#LayerHeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LayerHeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LayerHeight> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#LayerHeight> <http://www.w3.org/2000/01/rdf-schema#comment> "The height increment of one deposited layer, measured in-process by OCT or after deposition by laser line scanning."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#LayerHeight> <http://www.w3.org/2000/01/rdf-schema#label> "Layer Height"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolTemperature
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolTemperature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolTemperature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolTemperature> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/ThermodynamicTemperature> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolTemperature> <http://www.w3.org/2000/01/rdf-schema#comment> "The temperature of the interaction zone as measured by two-colour pyrometry."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolTemperature> <http://www.w3.org/2000/01/rdf-schema#label> "Melt Pool Temperature"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolWidth
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolWidth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolWidth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolWidth> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolWidth> <http://www.w3.org/2000/01/rdf-schema#comment> "The width of the melt pool as derived from high-speed imaging."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#MeltPoolWidth> <http://www.w3.org/2000/01/rdf-schema#label> "Melt Pool Width"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD10
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD10> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD10> <http://www.w3.org/2000/01/rdf-schema#comment> "The particle diameter below which 10 % of the powder volume lies."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD10> <http://www.w3.org/2000/01/rdf-schema#label> "Particle Size D10"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD50
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD50> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD50> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD50> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD50> <http://www.w3.org/2000/01/rdf-schema#comment> "The median particle diameter of the powder volume distribution."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD50> <http://www.w3.org/2000/01/rdf-schema#label> "Particle Size D50"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD90
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD90> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD90> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD90> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD90> <http://www.w3.org/2000/01/rdf-schema#comment> "The particle diameter below which 90 % of the powder volume lies."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ParticleSizeD90> <http://www.w3.org/2000/01/rdf-schema#label> "Particle Size D90"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#PowderMassFlowRate
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderMassFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderMassFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderMassFlowRate> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/MassFlowRate> .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderMassFlowRate> <http://www.w3.org/2000/01/rdf-schema#comment> "The mass of powder fed through the nozzle per unit time."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#PowderMassFlowRate> <http://www.w3.org/2000/01/rdf-schema#label> "Powder Mass Flow Rate"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ProcessingSpeed
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessingSpeed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessingSpeed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessingSpeed> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Velocity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessingSpeed> <http://www.w3.org/2000/01/rdf-schema#comment> "The relative speed between deposition head and substrate surface; in high-speed DED-LB/M typically tens of metres per minute."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ProcessingSpeed> <http://www.w3.org/2000/01/rdf-schema#label> "Processing Speed"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#RelativeDensity
+<http://w3id.org/circularfactory/ReprocessingSystem#RelativeDensity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#RelativeDensity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#RelativeDensity> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/DimensionlessRatio> .
+<http://w3id.org/circularfactory/ReprocessingSystem#RelativeDensity> <http://www.w3.org/2000/01/rdf-schema#comment> "The ratio of the density of the deposited material to the density of the fully dense material. Reference measurements are provided by material characterisation (subproject B02); C02 provides model-based predictions."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#RelativeDensity> <http://www.w3.org/2000/01/rdf-schema#label> "Relative Density"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#ShieldingGasFlowRate
+<http://w3id.org/circularfactory/ReprocessingSystem#ShieldingGasFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ShieldingGasFlowRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ShieldingGasFlowRate> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/VolumeFlowRate> .
+<http://w3id.org/circularfactory/ReprocessingSystem#ShieldingGasFlowRate> <http://www.w3.org/2000/01/rdf-schema#comment> "The volume flow rate of the inert gas shielding the interaction zone."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#ShieldingGasFlowRate> <http://www.w3.org/2000/01/rdf-schema#label> "Shielding Gas Flow Rate"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#SpectralLag
+<http://w3id.org/circularfactory/ReprocessingSystem#SpectralLag> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpectralLag> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#ProcessSignalQuantity> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpectralLag> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Time> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpectralLag> <http://www.w3.org/2000/01/rdf-schema#comment> "The time delay between a laser power step and the resulting emission response of the interaction zone."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpectralLag> <http://www.w3.org/2000/01/rdf-schema#label> "Spectral Lag"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#SpindleSpeed
+<http://w3id.org/circularfactory/ReprocessingSystem#SpindleSpeed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpindleSpeed> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#MachiningProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpindleSpeed> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/RotationalFrequency> .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpindleSpeed> <http://www.w3.org/2000/01/rdf-schema#comment> "The rotational frequency of the machine spindle."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#SpindleSpeed> <http://www.w3.org/2000/01/rdf-schema#label> "Spindle Speed"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#TrackOffset
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackOffset> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackOffset> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackOffset> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackOffset> <http://www.w3.org/2000/01/rdf-schema#comment> "The lateral distance between the centre lines of adjacent deposition tracks."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackOffset> <http://www.w3.org/2000/01/rdf-schema#label> "Track Offset"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#TrackWidth
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackWidth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackWidth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackWidth> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackWidth> <http://www.w3.org/2000/01/rdf-schema#comment> "The width of a single deposited track."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#TrackWidth> <http://www.w3.org/2000/01/rdf-schema#label> "Track Width"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#VickersHardness
+<http://w3id.org/circularfactory/ReprocessingSystem#VickersHardness> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#VickersHardness> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositCharacteristic> .
+<http://w3id.org/circularfactory/ReprocessingSystem#VickersHardness> <http://www.w3.org/2000/01/rdf-schema#comment> "The Vickers hardness of the deposited material. Reference measurements are provided by material characterisation (subproject B02); C02 provides model-based predictions. No QUDT quantity kind is assigned because hardness scales are not physical quantities in the sense of the SI."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#VickersHardness> <http://www.w3.org/2000/01/rdf-schema#label> "Vickers Hardness"@en .
+# 
+# http://w3id.org/circularfactory/ReprocessingSystem#WorkingDistance
+<http://w3id.org/circularfactory/ReprocessingSystem#WorkingDistance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://w3id.org/circularfactory/ReprocessingSystem#WorkingDistance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/circularfactory/ReprocessingSystem#DepositionProcessParameter> .
+<http://w3id.org/circularfactory/ReprocessingSystem#WorkingDistance> <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/Length> .
+<http://w3id.org/circularfactory/ReprocessingSystem#WorkingDistance> <http://www.w3.org/2000/01/rdf-schema#comment> "The distance between nozzle tip and substrate surface."@en .
+<http://w3id.org/circularfactory/ReprocessingSystem#WorkingDistance> <http://www.w3.org/2000/01/rdf-schema#label> "Working Distance"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    General axioms
+# #
+# #################################################################
+# 
+# 
+_:genid18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid18 <http://www.w3.org/2002/07/owl#members> _:genid25 .
+_:genid25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid24 .
+_:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid23 .
+_:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid22 .
+_:genid22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid21 .
+_:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid20 .
+_:genid20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid19 .
+_:genid19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#TwoColourPyrometer> .
+_:genid19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#PowderCausticAnalysisSystem> .
+_:genid20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#OpticalEmissionSpectrometer> .
+_:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#OpticalCoherenceTomographySystem> .
+_:genid22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#LaserLineScanner> .
+_:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedCamera> .
+_:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#AcousticEmissionSystem> .
+_:genid25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid26 <http://www.w3.org/2002/07/owl#members> _:genid29 .
+_:genid29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid28 .
+_:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid27 .
+_:genid27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#MonitoringRun> .
+_:genid27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#MachiningRun> .
+_:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#AdditiveDepositionRun> .
+_:genid29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid30 <http://www.w3.org/2002/07/owl#members> _:genid33 .
+_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid32 .
+_:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid31 .
+_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#SubtractiveMachiningProcess> .
+_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#HighSpeedDEDProcess> .
+_:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#AdditiveSubtractiveReprocessingProcess> .
+_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid34 <http://www.w3.org/2002/07/owl#members> _:genid38 .
+_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid37 .
+_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid36 .
+_:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid35 .
+_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#SpecializedMachineCell> .
+_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#PowderNozzle> .
+_:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#MeasurementSystem> .
+_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#ManufacturingResource> .
+_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid39 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDifferent> .
+_:genid39 <http://www.w3.org/2002/07/owl#distinctMembers> _:genid42 .
+_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid41 .
+_:genid41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid40 .
+_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeBEvaluation> .
+_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#GUMTypeAEvaluation> .
+_:genid41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/circularfactory/ReprocessingSystem#CrossValidatedPredictionError> .
+_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
